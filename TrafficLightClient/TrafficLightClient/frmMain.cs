@@ -20,12 +20,17 @@ namespace TrafficLightClient
 
         // Method to style form elements & set form properties
         private void prepareForm()
-        { 
-            Color backgroundColor = ColorTranslator.FromHtml("#ffffff");
-            //Color panelColor = ColorTranslator.FromHtml("#E0E0E0");
+        {
+            // set copyright date
+            string currentYear = DateTime.Now.Year.ToString();
+            this.lblCopyright.Text = "© " + currentYear + " James Hunt and Kyle Rusby Some Rights Reserved";
 
-            this.BackColor = backgroundColor;
-            //this.pnlUserControls.BackColor = panelColor;
+            // style form colors
+            this.BackColor = ColorTranslator.FromHtml("#ffffff");
+            this.pnlControlsBG.BackColor = ColorTranslator.FromHtml("#E0E0E0");
+            this.pnlControls.BackColor = ColorTranslator.FromHtml("#ffffff");
+            this.pnlSimulationBG.BackColor = ColorTranslator.FromHtml("#E0E0E0");
+            this.pnlSimulation.BackColor = ColorTranslator.FromHtml("#ffffff");
         }
     }
 }

@@ -29,28 +29,74 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            this.pnlUserControls = new System.Windows.Forms.Panel();
+            this.pnlControlsBG = new System.Windows.Forms.Panel();
+            this.pnlControls = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pnlSimulationBG = new System.Windows.Forms.Panel();
             this.pnlSimulation = new System.Windows.Forms.Panel();
             this.picAppLogo = new System.Windows.Forms.PictureBox();
             this.lblMainHeading = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblCopyright = new System.Windows.Forms.Label();
+            this.lblVersion = new System.Windows.Forms.Label();
+            this.pnlControlsBG.SuspendLayout();
+            this.pnlControls.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pnlSimulationBG.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAppLogo)).BeginInit();
             this.SuspendLayout();
             // 
-            // pnlUserControls
+            // pnlControlsBG
             // 
-            this.pnlUserControls.Location = new System.Drawing.Point(849, 12);
-            this.pnlUserControls.Name = "pnlUserControls";
-            this.pnlUserControls.Size = new System.Drawing.Size(285, 700);
-            this.pnlUserControls.TabIndex = 0;
+            this.pnlControlsBG.Controls.Add(this.pnlControls);
+            this.pnlControlsBG.Location = new System.Drawing.Point(849, 12);
+            this.pnlControlsBG.Name = "pnlControlsBG";
+            this.pnlControlsBG.Size = new System.Drawing.Size(285, 700);
+            this.pnlControlsBG.TabIndex = 0;
+            // 
+            // pnlControls
+            // 
+            this.pnlControls.Controls.Add(this.pictureBox1);
+            this.pnlControls.Controls.Add(this.label1);
+            this.pnlControls.Location = new System.Drawing.Point(3, 3);
+            this.pnlControls.Name = "pnlControls";
+            this.pnlControls.Size = new System.Drawing.Size(279, 694);
+            this.pnlControls.TabIndex = 1;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(24, 5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(39, 37);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("DINPro-Regular", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(69, 5);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(178, 35);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "User Controls";
+            // 
+            // pnlSimulationBG
+            // 
+            this.pnlSimulationBG.Controls.Add(this.pnlSimulation);
+            this.pnlSimulationBG.Location = new System.Drawing.Point(12, 99);
+            this.pnlSimulationBG.Name = "pnlSimulationBG";
+            this.pnlSimulationBG.Size = new System.Drawing.Size(831, 613);
+            this.pnlSimulationBG.TabIndex = 1;
             // 
             // pnlSimulation
             // 
-            this.pnlSimulation.Location = new System.Drawing.Point(12, 99);
+            this.pnlSimulation.Location = new System.Drawing.Point(3, 3);
             this.pnlSimulation.Name = "pnlSimulation";
-            this.pnlSimulation.Size = new System.Drawing.Size(831, 613);
-            this.pnlSimulation.TabIndex = 1;
+            this.pnlSimulation.Size = new System.Drawing.Size(825, 607);
+            this.pnlSimulation.TabIndex = 2;
             // 
             // picAppLogo
             // 
@@ -72,42 +118,47 @@
             this.lblMainHeading.TabIndex = 3;
             this.lblMainHeading.Text = "Traffic Light Simulation";
             // 
-            // label1
+            // lblCopyright
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("DINPro-Regular", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 715);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(340, 17);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "©2018 James Hunt and Kyle Rusby Some Rights Reserved";
+            this.lblCopyright.AutoSize = true;
+            this.lblCopyright.Font = new System.Drawing.Font("DINPro-Regular", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCopyright.Location = new System.Drawing.Point(12, 715);
+            this.lblCopyright.Name = "lblCopyright";
+            this.lblCopyright.Size = new System.Drawing.Size(340, 17);
+            this.lblCopyright.TabIndex = 4;
+            this.lblCopyright.Text = "©2018 James Hunt and Kyle Rusby Some Rights Reserved";
             // 
-            // label2
+            // lblVersion
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("DINPro-Regular", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(1049, 715);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 17);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Version: 1.0.0";
+            this.lblVersion.AutoSize = true;
+            this.lblVersion.Font = new System.Drawing.Font("DINPro-Regular", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVersion.Location = new System.Drawing.Point(1049, 715);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(85, 17);
+            this.lblVersion.TabIndex = 5;
+            this.lblVersion.Text = "Version: 1.0.0";
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1146, 738);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblVersion);
+            this.Controls.Add(this.lblCopyright);
             this.Controls.Add(this.lblMainHeading);
             this.Controls.Add(this.picAppLogo);
-            this.Controls.Add(this.pnlSimulation);
-            this.Controls.Add(this.pnlUserControls);
+            this.Controls.Add(this.pnlSimulationBG);
+            this.Controls.Add(this.pnlControlsBG);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmMain";
             this.Text = "Traffic Light Simulation - Client";
+            this.pnlControlsBG.ResumeLayout(false);
+            this.pnlControls.ResumeLayout(false);
+            this.pnlControls.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.pnlSimulationBG.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picAppLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -116,12 +167,16 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel pnlUserControls;
-        private System.Windows.Forms.Panel pnlSimulation;
+        private System.Windows.Forms.Panel pnlControlsBG;
+        private System.Windows.Forms.Panel pnlSimulationBG;
         private System.Windows.Forms.PictureBox picAppLogo;
         private System.Windows.Forms.Label lblMainHeading;
+        private System.Windows.Forms.Label lblCopyright;
+        private System.Windows.Forms.Label lblVersion;
+        private System.Windows.Forms.Panel pnlControls;
+        private System.Windows.Forms.Panel pnlSimulation;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
