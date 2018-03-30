@@ -10,11 +10,18 @@ using System.Windows.Forms;
 
 namespace TrafficLightClient
 {
-    public partial class Form1 : Form
+    public partial class frmMain : Form
     {
-        public Form1()
+        public frmMain()
         {
             InitializeComponent();
+            this.prepareForm();
+        }
+
+        // Method to style form elements & set form properties
+        private void prepareForm()
+        {
+            
         }
     }
 }

@@ -1,0 +1,10 @@
+C:\git\Traffic-Light-Simulation\TrafficLightClient\TrafficLightClient\bin\Debug\TrafficLightClient.exe.config
+C:\git\Traffic-Light-Simulation\TrafficLightClient\TrafficLightClient\bin\Debug\TrafficLightClient.exe
+C:\git\Traffic-Light-Simulation\TrafficLightClient\TrafficLightClient\bin\Debug\TrafficLightClient.pdb
+C:\git\Traffic-Light-Simulation\TrafficLightClient\TrafficLightClient\obj\Debug\TrafficLightClient.csprojResolveAssemblyReference.cache
+C:\git\Traffic-Light-Simulation\TrafficLightClient\TrafficLightClient\obj\Debug\TrafficLightClient.frmMain.resources
+C:\git\Traffic-Light-Simulation\TrafficLightClient\TrafficLightClient\obj\Debug\TrafficLightClient.Properties.Resources.resources
+C:\git\Traffic-Light-Simulation\TrafficLightClient\TrafficLightClient\obj\Debug\TrafficLightClient.csproj.GenerateResource.Cache
+C:\git\Traffic-Light-Simulation\TrafficLightClient\TrafficLightClient\obj\Debug\TrafficLightClient.csproj.CoreCompileInputs.cache
+C:\git\Traffic-Light-Simulation\TrafficLightClient\TrafficLightClient\obj\Debug\TrafficLightClient.exe
+C:\git\Traffic-Light-Simulation\TrafficLightClient\TrafficLightClient\obj\Debug\TrafficLightClient.pdb
