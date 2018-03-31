@@ -1,5 +1,5 @@
 # Traffic-Lights
-Concurrent traffic light simulation to demonstrate safe multi-threading where a client can interact with a server through a proxy.
+Concurrent traffic light simulation to demonstrate safe multi-threading where clients can interact with the server through a proxy.
 
 Requirements of the system:
  - Create a client application to a server via a proxy.
