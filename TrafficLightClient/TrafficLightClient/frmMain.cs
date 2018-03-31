@@ -31,6 +31,22 @@ namespace TrafficLightClient
             this.pnlControls.BackColor = ColorTranslator.FromHtml("#ffffff");
             this.pnlSimulationBG.BackColor = ColorTranslator.FromHtml("#E0E0E0");
             this.pnlSimulation.BackColor = ColorTranslator.FromHtml("#ffffff");
+
+            // Move this to seperate method when connections become possible...
+            bool connected = false;
+
+            if (connected)
+            {
+                this.lblServerState.Text = "Connected";
+                this.lblServerState.ForeColor = Color.Green;
+                this.lstServerEcho.Items.Add("You are now connected.");
+            }
+            else
+            {
+                this.lblServerState.Text = "Disconnected";
+                this.lblServerState.ForeColor = Color.Red;
+                this.lstServerEcho.Items.Add("You are not currently connected.");
+            }
         }
     }
 }

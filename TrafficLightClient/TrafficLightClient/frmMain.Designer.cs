@@ -39,6 +39,10 @@
             this.lblMainHeading = new System.Windows.Forms.Label();
             this.lblCopyright = new System.Windows.Forms.Label();
             this.lblVersion = new System.Windows.Forms.Label();
+            this.lstServerEcho = new System.Windows.Forms.ListBox();
+            this.lblServerEcho = new System.Windows.Forms.Label();
+            this.lblServerStatus = new System.Windows.Forms.Label();
+            this.lblServerState = new System.Windows.Forms.Label();
             this.pnlControlsBG.SuspendLayout();
             this.pnlControls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -56,6 +60,10 @@
             // 
             // pnlControls
             // 
+            this.pnlControls.Controls.Add(this.lblServerState);
+            this.pnlControls.Controls.Add(this.lblServerStatus);
+            this.pnlControls.Controls.Add(this.lblServerEcho);
+            this.pnlControls.Controls.Add(this.lstServerEcho);
             this.pnlControls.Controls.Add(this.pictureBox1);
             this.pnlControls.Controls.Add(this.label1);
             this.pnlControls.Location = new System.Drawing.Point(3, 3);
@@ -66,9 +74,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(24, 5);
+            this.pictureBox1.Location = new System.Drawing.Point(28, 16);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(39, 37);
+            this.pictureBox1.Size = new System.Drawing.Size(37, 35);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
@@ -77,7 +85,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("DINPro-Regular", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(69, 5);
+            this.label1.Location = new System.Drawing.Point(71, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(178, 35);
             this.label1.TabIndex = 6;
@@ -138,6 +146,46 @@
             this.lblVersion.TabIndex = 5;
             this.lblVersion.Text = "Version: 1.0.0";
             // 
+            // lstServerEcho
+            // 
+            this.lstServerEcho.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstServerEcho.FormattingEnabled = true;
+            this.lstServerEcho.ItemHeight = 16;
+            this.lstServerEcho.Location = new System.Drawing.Point(3, 524);
+            this.lstServerEcho.Name = "lstServerEcho";
+            this.lstServerEcho.Size = new System.Drawing.Size(273, 132);
+            this.lstServerEcho.TabIndex = 7;
+            // 
+            // lblServerEcho
+            // 
+            this.lblServerEcho.AutoSize = true;
+            this.lblServerEcho.Font = new System.Drawing.Font("DINPro-Regular", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblServerEcho.Location = new System.Drawing.Point(3, 494);
+            this.lblServerEcho.Name = "lblServerEcho";
+            this.lblServerEcho.Size = new System.Drawing.Size(149, 27);
+            this.lblServerEcho.TabIndex = 8;
+            this.lblServerEcho.Text = "Server Activity:";
+            // 
+            // lblServerStatus
+            // 
+            this.lblServerStatus.AutoSize = true;
+            this.lblServerStatus.Font = new System.Drawing.Font("DINPro-Regular", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblServerStatus.Location = new System.Drawing.Point(3, 661);
+            this.lblServerStatus.Name = "lblServerStatus";
+            this.lblServerStatus.Size = new System.Drawing.Size(129, 24);
+            this.lblServerStatus.TabIndex = 9;
+            this.lblServerStatus.Text = "Server Status:";
+            // 
+            // lblServerState
+            // 
+            this.lblServerState.AutoSize = true;
+            this.lblServerState.Font = new System.Drawing.Font("DINPro-Regular", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblServerState.Location = new System.Drawing.Point(138, 661);
+            this.lblServerState.Name = "lblServerState";
+            this.lblServerState.Size = new System.Drawing.Size(121, 24);
+            this.lblServerState.TabIndex = 10;
+            this.lblServerState.Text = "current-state";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -177,6 +225,10 @@
         private System.Windows.Forms.Panel pnlSimulation;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ListBox lstServerEcho;
+        private System.Windows.Forms.Label lblServerEcho;
+        private System.Windows.Forms.Label lblServerStatus;
+        private System.Windows.Forms.Label lblServerState;
     }
 }
 
