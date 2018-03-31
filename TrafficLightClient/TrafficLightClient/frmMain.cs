@@ -18,6 +18,9 @@ namespace TrafficLightClient
             this.prepareForm();
         }
 
+        // Server status indication
+        private bool connected = false;
+
         // Method to style form elements & set form properties
         private void prepareForm()
         {
@@ -32,9 +35,7 @@ namespace TrafficLightClient
             this.pnlSimulationBG.BackColor = ColorTranslator.FromHtml("#E0E0E0");
             this.pnlSimulation.BackColor = ColorTranslator.FromHtml("#ffffff");
 
-            // Move this to seperate method when connections become possible...
-            bool connected = false;
-
+            // Move this to seperate method when connection testing become possible...
             if (connected)
             {
                 this.lblServerState.Text = "Connected";
