@@ -214,7 +214,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmMain";
-            this.Text = "Traffic Light Simulation - Client";
+            this.Text = "Traffic Light Simulation - Client Application";
             this.pnlControlsBG.ResumeLayout(false);
             this.pnlControls.ResumeLayout(false);
             this.pnlControls.PerformLayout();

@@ -48,10 +48,43 @@ namespace TrafficLightClient
             this.lblServerState.ForeColor = Color.Red;
         }
 
-        // Method to connect client app to server
+        // Method to invoke connection from client application to server
         private void btnConnect_Click(object sender, EventArgs e)
         {
+            this.connected = !this.connected;
 
+            if (connected)
+            {
+                // connect to server
+                this.connectToServer();
+
+                // update form styles & content
+                this.btnConnect.Text = "Disconnect";
+                this.lblServerState.Text = "Connected";
+                this.lblServerState.ForeColor = Color.Green;
+            }
+            else
+            {
+                // disconnect from server
+                this.disconnectFromServer();
+
+                // update form styles & content
+                this.btnConnect.Text = "Connect";
+                this.lblServerState.Text = "Disconnected";
+                this.lblServerState.ForeColor = Color.Red;
+            }
+        }
+
+        // Method to connect client application to server
+        private void connectToServer()
+        {
+            // come back here...
+        }
+
+        // Method to break connection from client application to server
+        private void disconnectFromServer()
+        {
+            // come back here...
         }
     }
 }
