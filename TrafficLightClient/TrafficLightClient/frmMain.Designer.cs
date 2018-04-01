@@ -44,11 +44,14 @@
             this.lblCopyright = new System.Windows.Forms.Label();
             this.lblVersion = new System.Windows.Forms.Label();
             this.btnConnect = new System.Windows.Forms.Button();
+            this.grpFunctionality = new System.Windows.Forms.GroupBox();
+            this.btnAddCar = new System.Windows.Forms.Button();
             this.pnlControlsBG.SuspendLayout();
             this.pnlControls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlSimulationBG.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAppLogo)).BeginInit();
+            this.grpFunctionality.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlControlsBG
@@ -61,6 +64,7 @@
             // 
             // pnlControls
             // 
+            this.pnlControls.Controls.Add(this.grpFunctionality);
             this.pnlControls.Controls.Add(this.btnConnect);
             this.pnlControls.Controls.Add(this.lblServerState);
             this.pnlControls.Controls.Add(this.lblServerStatus);
@@ -105,12 +109,12 @@
             // 
             // lstServerEcho
             // 
-            this.lstServerEcho.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstServerEcho.Font = new System.Drawing.Font("DINPro-Regular", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstServerEcho.FormattingEnabled = true;
-            this.lstServerEcho.ItemHeight = 16;
+            this.lstServerEcho.ItemHeight = 17;
             this.lstServerEcho.Location = new System.Drawing.Point(3, 524);
             this.lstServerEcho.Name = "lstServerEcho";
-            this.lstServerEcho.Size = new System.Drawing.Size(273, 132);
+            this.lstServerEcho.Size = new System.Drawing.Size(273, 123);
             this.lstServerEcho.TabIndex = 7;
             // 
             // pictureBox1
@@ -191,13 +195,33 @@
             // btnConnect
             // 
             this.btnConnect.Font = new System.Drawing.Font("DINPro-Regular", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConnect.Location = new System.Drawing.Point(8, 84);
+            this.btnConnect.Location = new System.Drawing.Point(3, 84);
             this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(268, 52);
+            this.btnConnect.Size = new System.Drawing.Size(273, 52);
             this.btnConnect.TabIndex = 6;
             this.btnConnect.Text = "Connect";
             this.btnConnect.UseVisualStyleBackColor = true;
             this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
+            // 
+            // grpFunctionality
+            // 
+            this.grpFunctionality.Controls.Add(this.btnAddCar);
+            this.grpFunctionality.Location = new System.Drawing.Point(4, 142);
+            this.grpFunctionality.Name = "grpFunctionality";
+            this.grpFunctionality.Size = new System.Drawing.Size(272, 349);
+            this.grpFunctionality.TabIndex = 11;
+            this.grpFunctionality.TabStop = false;
+            // 
+            // btnAddCar
+            // 
+            this.btnAddCar.Font = new System.Drawing.Font("DINPro-Regular", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddCar.Location = new System.Drawing.Point(6, 45);
+            this.btnAddCar.Name = "btnAddCar";
+            this.btnAddCar.Size = new System.Drawing.Size(260, 52);
+            this.btnAddCar.TabIndex = 12;
+            this.btnAddCar.Text = "Add New Car";
+            this.btnAddCar.UseVisualStyleBackColor = true;
+            this.btnAddCar.Click += new System.EventHandler(this.btnAddCar_Click);
             // 
             // frmMain
             // 
@@ -221,6 +245,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlSimulationBG.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picAppLogo)).EndInit();
+            this.grpFunctionality.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -243,6 +268,8 @@
         private System.Windows.Forms.Label lblServerStatus;
         private System.Windows.Forms.Label lblServerState;
         private System.Windows.Forms.Button btnConnect;
+        private System.Windows.Forms.GroupBox grpFunctionality;
+        private System.Windows.Forms.Button btnAddCar;
     }
 }
 

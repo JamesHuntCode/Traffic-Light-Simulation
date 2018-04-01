@@ -38,14 +38,22 @@ namespace TrafficLightClient
             this.pnlSimulation.BackColor = ColorTranslator.FromHtml("#ffffff");
 
             // buttons
-            this.btnConnect.FlatStyle = FlatStyle.Flat;
-            this.btnConnect.FlatAppearance.BorderColor = ColorTranslator.FromHtml("#E0E0E0");
-            this.btnConnect.FlatAppearance.BorderSize = 2;
-            this.btnConnect.BackColor = ColorTranslator.FromHtml("#ffffff");
-             
+            Button[] buttons = { this.btnConnect, this.btnAddCar };
+            
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                buttons[i].FlatStyle = FlatStyle.Flat;
+                buttons[i].FlatAppearance.BorderColor = ColorTranslator.FromHtml("#E0E0E0");
+                buttons[i].FlatAppearance.BorderSize = 2;
+                buttons[i].BackColor = ColorTranslator.FromHtml("#ffffff");
+            }
+
             // labels
             this.lblServerState.Text = "Disconnected";
             this.lblServerState.ForeColor = Color.Red;
+
+            // group boxes 
+            this.grpFunctionality.Enabled = false;
         }
 
         // Method to invoke connection from client application to server
@@ -62,17 +70,31 @@ namespace TrafficLightClient
                 this.btnConnect.Text = "Disconnect";
                 this.lblServerState.Text = "Connected";
                 this.lblServerState.ForeColor = Color.Green;
+                this.grpFunctionality.Enabled = true;
             }
             else
             {
-                // disconnect from server
-                this.disconnectFromServer();
+                // make sure user wants to disconnect
+                DialogResult dialogResult = MessageBox.Show("Are you sure you wish to disconnect from the server?", "Warning", MessageBoxButtons.YesNo);
 
-                // update form styles & content
-                this.btnConnect.Text = "Connect";
-                this.lblServerState.Text = "Disconnected";
-                this.lblServerState.ForeColor = Color.Red;
+                if (dialogResult == DialogResult.Yes)
+                {
+                    // disconnect from server
+                    this.disconnectFromServer();
+
+                    // update form styles & content
+                    this.btnConnect.Text = "Connect";
+                    this.lblServerState.Text = "Disconnected";
+                    this.lblServerState.ForeColor = Color.Red;
+                    this.grpFunctionality.Enabled = false;
+                }
             }
+        }
+
+        // Method to invoke the addition of a new car to the server
+        private void btnAddCar_Click(object sender, EventArgs e)
+        {
+            this.createNewCar();
         }
 
         // Method to connect client application to server
@@ -83,6 +105,11 @@ namespace TrafficLightClient
 
         // Method to break connection from client application to server
         private void disconnectFromServer()
+        {
+            // come back here...
+        }
+
+        private void createNewCar()
         {
             // come back here...
         }
