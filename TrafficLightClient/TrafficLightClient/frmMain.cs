@@ -63,14 +63,14 @@ namespace TrafficLightClient
 
             if (connected)
             {
-                // connect to server
-                this.connectToServer();
-
                 // update form styles & content
                 this.btnConnect.Text = "Disconnect";
                 this.lblServerState.Text = "Connected";
                 this.lblServerState.ForeColor = Color.Green;
                 this.grpFunctionality.Enabled = true;
+
+                // connect to server
+                this.connectToServer();
             }
             else
             {
@@ -79,14 +79,14 @@ namespace TrafficLightClient
 
                 if (dialogResult == DialogResult.Yes)
                 {
-                    // disconnect from server
-                    this.disconnectFromServer();
-
                     // update form styles & content
                     this.btnConnect.Text = "Connect";
                     this.lblServerState.Text = "Disconnected";
                     this.lblServerState.ForeColor = Color.Red;
                     this.grpFunctionality.Enabled = false;
+
+                    // disconnect from server
+                    this.disconnectFromServer();
                 }
             }
         }

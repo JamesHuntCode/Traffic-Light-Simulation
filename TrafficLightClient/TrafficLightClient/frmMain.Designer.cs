@@ -103,9 +103,9 @@
             this.lblServerEcho.Font = new System.Drawing.Font("DINPro-Regular", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblServerEcho.Location = new System.Drawing.Point(3, 494);
             this.lblServerEcho.Name = "lblServerEcho";
-            this.lblServerEcho.Size = new System.Drawing.Size(149, 27);
+            this.lblServerEcho.Size = new System.Drawing.Size(219, 27);
             this.lblServerEcho.TabIndex = 8;
-            this.lblServerEcho.Text = "Server Activity:";
+            this.lblServerEcho.Text = "Recent Server Activity:";
             // 
             // lstServerEcho
             // 
@@ -215,7 +215,7 @@
             // btnAddCar
             // 
             this.btnAddCar.Font = new System.Drawing.Font("DINPro-Regular", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddCar.Location = new System.Drawing.Point(6, 45);
+            this.btnAddCar.Location = new System.Drawing.Point(6, 19);
             this.btnAddCar.Name = "btnAddCar";
             this.btnAddCar.Size = new System.Drawing.Size(260, 52);
             this.btnAddCar.TabIndex = 12;
