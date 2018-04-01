@@ -43,6 +43,7 @@
             this.lblMainHeading = new System.Windows.Forms.Label();
             this.lblCopyright = new System.Windows.Forms.Label();
             this.lblVersion = new System.Windows.Forms.Label();
+            this.btnConnect = new System.Windows.Forms.Button();
             this.pnlControlsBG.SuspendLayout();
             this.pnlControls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -60,6 +61,7 @@
             // 
             // pnlControls
             // 
+            this.pnlControls.Controls.Add(this.btnConnect);
             this.pnlControls.Controls.Add(this.lblServerState);
             this.pnlControls.Controls.Add(this.lblServerStatus);
             this.pnlControls.Controls.Add(this.lblServerEcho);
@@ -186,6 +188,17 @@
             this.lblVersion.TabIndex = 5;
             this.lblVersion.Text = "Version: 1.0.0";
             // 
+            // btnConnect
+            // 
+            this.btnConnect.Font = new System.Drawing.Font("DINPro-Regular", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConnect.Location = new System.Drawing.Point(8, 84);
+            this.btnConnect.Name = "btnConnect";
+            this.btnConnect.Size = new System.Drawing.Size(268, 52);
+            this.btnConnect.TabIndex = 6;
+            this.btnConnect.Text = "Connect";
+            this.btnConnect.UseVisualStyleBackColor = true;
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -229,6 +242,7 @@
         private System.Windows.Forms.Label lblServerEcho;
         private System.Windows.Forms.Label lblServerStatus;
         private System.Windows.Forms.Label lblServerState;
+        private System.Windows.Forms.Button btnConnect;
     }
 }
 

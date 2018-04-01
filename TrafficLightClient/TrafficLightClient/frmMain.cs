@@ -29,25 +29,29 @@ namespace TrafficLightClient
             this.lblCopyright.Text = "© " + currentYear + " James Hunt and Kyle Rusby Some Rights Reserved";
 
             // style form colors
+
+            // panels
             this.BackColor = ColorTranslator.FromHtml("#ffffff");
             this.pnlControlsBG.BackColor = ColorTranslator.FromHtml("#E0E0E0");
             this.pnlControls.BackColor = ColorTranslator.FromHtml("#ffffff");
             this.pnlSimulationBG.BackColor = ColorTranslator.FromHtml("#E0E0E0");
             this.pnlSimulation.BackColor = ColorTranslator.FromHtml("#ffffff");
 
-            // Move this to seperate method when connection testing become possible...
-            if (connected)
-            {
-                this.lblServerState.Text = "Connected";
-                this.lblServerState.ForeColor = Color.Green;
-                this.lstServerEcho.Items.Add("You are now connected.");
-            }
-            else
-            {
-                this.lblServerState.Text = "Disconnected";
-                this.lblServerState.ForeColor = Color.Red;
-                this.lstServerEcho.Items.Add("You are not currently connected.");
-            }
+            // buttons
+            this.btnConnect.FlatStyle = FlatStyle.Flat;
+            this.btnConnect.FlatAppearance.BorderColor = ColorTranslator.FromHtml("#E0E0E0");
+            this.btnConnect.FlatAppearance.BorderSize = 2;
+            this.btnConnect.BackColor = ColorTranslator.FromHtml("#ffffff");
+             
+            // labels
+            this.lblServerState.Text = "Disconnected";
+            this.lblServerState.ForeColor = Color.Red;
+        }
+
+        // Method to connect client app to server
+        private void btnConnect_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
