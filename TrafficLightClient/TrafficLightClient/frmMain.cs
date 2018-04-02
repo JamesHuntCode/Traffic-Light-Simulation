@@ -20,7 +20,7 @@ namespace TrafficLightClient
         }
 
         // Server status indication
-        private bool connected = false;
+        private bool connected;
 
         // User preference indication
         private bool autoconnectStatus;
@@ -31,6 +31,30 @@ namespace TrafficLightClient
             // evaluate autoconnect status
             autoconnectStatus = this.checkAutoConnect();
             this.radAutoConnect.Checked = autoconnectStatus;
+            this.updateAutoConnect(autoconnectStatus);
+
+            if (autoconnectStatus)
+            {
+                bool connected = this.connectToServer();
+
+                if (connected)
+                {
+                    this.updateForm("connected");
+                }
+                else
+                {
+                    MessageBox.Show(text: "Oops! There has been an error connecting to the server. Please try again later.");
+                }
+            }
+            else
+            {
+                // group boxes 
+                this.grpFunctionality.Enabled = false;
+
+                // labels
+                this.lblServerState.Text = "Disconnected";
+                this.lblServerState.ForeColor = Color.Red;
+            }
 
             // set copyright date
             string currentYear = DateTime.Now.Year.ToString();
@@ -55,13 +79,6 @@ namespace TrafficLightClient
                 buttons[i].FlatAppearance.BorderSize = 2;
                 buttons[i].BackColor = ColorTranslator.FromHtml("#ffffff");
             }
-
-            // labels
-            this.lblServerState.Text = "Disconnected";
-            this.lblServerState.ForeColor = Color.Red;
-
-            // group boxes 
-            this.grpFunctionality.Enabled = false;
         }
 
         // Method to invoke update regarding autoconnect preferences
@@ -78,10 +95,7 @@ namespace TrafficLightClient
             if (connected)
             {
                 // update form styles & content
-                this.btnConnect.Text = "Disconnect";
-                this.lblServerState.Text = "Connected";
-                this.lblServerState.ForeColor = Color.Green;
-                this.grpFunctionality.Enabled = true;
+                this.updateForm("connected");
 
                 // connect to server
                 this.connectToServer();
@@ -89,15 +103,12 @@ namespace TrafficLightClient
             else
             {
                 // make sure user wants to disconnect
-                DialogResult dialogResult = MessageBox.Show("Are you sure you wish to disconnect from the server?", "Warning", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("Are you sure you wish to disconnect from the server?", "Alert", MessageBoxButtons.YesNo);
 
                 if (dialogResult == DialogResult.Yes)
                 {
                     // update form styles & content
-                    this.btnConnect.Text = "Connect";
-                    this.lblServerState.Text = "Disconnected";
-                    this.lblServerState.ForeColor = Color.Red;
-                    this.grpFunctionality.Enabled = false;
+                    this.updateForm("disconnected");
 
                     // disconnect from server
                     this.disconnectFromServer();
@@ -112,20 +123,23 @@ namespace TrafficLightClient
         }
 
         // Method to connect client application to server
-        private void connectToServer()
+        private bool connectToServer()
         {
             // come back here...
+            return true;
         }
 
         // Method to break connection from client application to server
-        private void disconnectFromServer()
+        private bool disconnectFromServer()
         {
             // come back here...
+            return true;
         }
 
-        private void createNewCar()
+        private bool createNewCar()
         {
             // come back here...
+            return true;
         }
 
         // Method to see if user wishes to connect automatically (upon app open)
@@ -141,15 +155,12 @@ namespace TrafficLightClient
                     {
                         return true;
                     }
-                    else
-                    {
-                        return false;
-                    }
                 }
             }
             return false;
         }
 
+        // Method to update current user preferences (auto connect)
         private void updateAutoConnect(bool newPreference)
         {
             string filePath = Environment.CurrentDirectory + @"\preferences.txt";
@@ -160,6 +171,32 @@ namespace TrafficLightClient
                 {
                     mySW.WriteLine(newPreference.ToString().ToLower());
                 }
+            }
+        }
+
+        private void updateForm(string status)
+        {
+            if (status == "connected")
+            {
+                this.btnConnect.Text = "Disconnect";
+                this.lblServerState.Text = "Connected";
+                this.lblServerState.ForeColor = Color.Green;
+                this.grpFunctionality.Enabled = true;
+            }
+            else if (status == "disconnected")
+            {
+                this.btnConnect.Text = "Connect";
+                this.lblServerState.Text = "Disconnected";
+                this.lblServerState.ForeColor = Color.Red;
+                this.grpFunctionality.Enabled = false;
+            }
+            else
+            {
+                this.btnConnect.Text = "Disconnect";
+                this.lblServerState.Text = "Loading...";
+                this.lblServerState.ForeColor = Color.Teal;
+                this.grpFunctionality.Enabled = false;
+                this.btnConnect.Enabled = false;
             }
         }
     }
