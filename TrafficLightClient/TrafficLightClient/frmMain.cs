@@ -23,14 +23,14 @@ namespace TrafficLightClient
         private bool connected = false;
 
         // User preference indication
-        private bool autoconnect;
+        private bool autoconnectStatus;
 
         // Method to style form elements & set form properties
         private void prepareForm()
         {
             // evaluate autoconnect status
-            autoconnect = this.checkAutoConnect();
-            this.radAutoConnect.Checked = autoconnect;
+            autoconnectStatus = this.checkAutoConnect();
+            this.radAutoConnect.Checked = autoconnectStatus;
 
             // set copyright date
             string currentYear = DateTime.Now.Year.ToString();
@@ -67,7 +67,7 @@ namespace TrafficLightClient
         // Method to invoke update regarding autoconnect preferences
         private void radAutoConnect_CheckedChanged(object sender, EventArgs e)
         {
-
+            this.updateAutoConnect(!autoconnectStatus);
         }
 
         // Method to invoke connection from client application to server
@@ -150,9 +150,17 @@ namespace TrafficLightClient
             return false;
         }
 
-        private void updateAutoConnect()
+        private void updateAutoConnect(bool newPreference)
         {
+            string filePath = Environment.CurrentDirectory + @"\preferences.txt";
 
+            if (File.Exists(filePath))
+            {
+                using (StreamWriter mySW = new StreamWriter(filePath))
+                {
+                    mySW.WriteLine(newPreference.ToString().ToLower());
+                }
+            }
         }
     }
 }
