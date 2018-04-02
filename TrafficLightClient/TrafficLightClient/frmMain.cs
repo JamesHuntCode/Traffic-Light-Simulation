@@ -33,13 +33,23 @@ namespace TrafficLightClient
             this.radAutoConnect.Checked = autoconnectStatus;
             this.updateAutoConnect(autoconnectStatus);
 
+            connected = this.connectToServer();
+
             if (autoconnectStatus)
             {
-                bool connected = this.connectToServer();
-
                 if (connected)
                 {
-                    this.updateForm("connected");
+                    // put program in loading phase
+                    this.updateForm("waiting");
+
+                    // mimic time delay (remove later) to simulate server loading times in application
+                    Timer timer = new Timer();
+                    timer.Interval = 3000;
+                    timer.Tick += new EventHandler(callConnected);
+                    timer.Start();
+
+                    // display connected
+                    //this.updateForm("connected");
                 }
                 else
                 {
