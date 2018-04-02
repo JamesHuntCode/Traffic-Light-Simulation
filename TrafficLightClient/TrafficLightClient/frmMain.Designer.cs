@@ -31,6 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.pnlControlsBG = new System.Windows.Forms.Panel();
             this.pnlControls = new System.Windows.Forms.Panel();
+            this.grpFunctionality = new System.Windows.Forms.GroupBox();
+            this.btnAddCar = new System.Windows.Forms.Button();
+            this.btnConnect = new System.Windows.Forms.Button();
             this.lblServerState = new System.Windows.Forms.Label();
             this.lblServerStatus = new System.Windows.Forms.Label();
             this.lblServerEcho = new System.Windows.Forms.Label();
@@ -43,15 +46,13 @@
             this.lblMainHeading = new System.Windows.Forms.Label();
             this.lblCopyright = new System.Windows.Forms.Label();
             this.lblVersion = new System.Windows.Forms.Label();
-            this.btnConnect = new System.Windows.Forms.Button();
-            this.grpFunctionality = new System.Windows.Forms.GroupBox();
-            this.btnAddCar = new System.Windows.Forms.Button();
+            this.radAutoConnect = new System.Windows.Forms.CheckBox();
             this.pnlControlsBG.SuspendLayout();
             this.pnlControls.SuspendLayout();
+            this.grpFunctionality.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlSimulationBG.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAppLogo)).BeginInit();
-            this.grpFunctionality.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlControlsBG
@@ -76,6 +77,37 @@
             this.pnlControls.Name = "pnlControls";
             this.pnlControls.Size = new System.Drawing.Size(279, 694);
             this.pnlControls.TabIndex = 1;
+            // 
+            // grpFunctionality
+            // 
+            this.grpFunctionality.Controls.Add(this.btnAddCar);
+            this.grpFunctionality.Location = new System.Drawing.Point(4, 142);
+            this.grpFunctionality.Name = "grpFunctionality";
+            this.grpFunctionality.Size = new System.Drawing.Size(272, 349);
+            this.grpFunctionality.TabIndex = 11;
+            this.grpFunctionality.TabStop = false;
+            // 
+            // btnAddCar
+            // 
+            this.btnAddCar.Font = new System.Drawing.Font("DINPro-Regular", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddCar.Location = new System.Drawing.Point(6, 19);
+            this.btnAddCar.Name = "btnAddCar";
+            this.btnAddCar.Size = new System.Drawing.Size(260, 52);
+            this.btnAddCar.TabIndex = 12;
+            this.btnAddCar.Text = "Add New Car";
+            this.btnAddCar.UseVisualStyleBackColor = true;
+            this.btnAddCar.Click += new System.EventHandler(this.btnAddCar_Click);
+            // 
+            // btnConnect
+            // 
+            this.btnConnect.Font = new System.Drawing.Font("DINPro-Regular", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConnect.Location = new System.Drawing.Point(3, 84);
+            this.btnConnect.Name = "btnConnect";
+            this.btnConnect.Size = new System.Drawing.Size(273, 52);
+            this.btnConnect.TabIndex = 6;
+            this.btnConnect.Text = "Connect";
+            this.btnConnect.UseVisualStyleBackColor = true;
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
             // lblServerState
             // 
@@ -192,42 +224,23 @@
             this.lblVersion.TabIndex = 5;
             this.lblVersion.Text = "Version: 1.0.0";
             // 
-            // btnConnect
+            // radAutoConnect
             // 
-            this.btnConnect.Font = new System.Drawing.Font("DINPro-Regular", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConnect.Location = new System.Drawing.Point(3, 84);
-            this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(273, 52);
-            this.btnConnect.TabIndex = 6;
-            this.btnConnect.Text = "Connect";
-            this.btnConnect.UseVisualStyleBackColor = true;
-            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
-            // 
-            // grpFunctionality
-            // 
-            this.grpFunctionality.Controls.Add(this.btnAddCar);
-            this.grpFunctionality.Location = new System.Drawing.Point(4, 142);
-            this.grpFunctionality.Name = "grpFunctionality";
-            this.grpFunctionality.Size = new System.Drawing.Size(272, 349);
-            this.grpFunctionality.TabIndex = 11;
-            this.grpFunctionality.TabStop = false;
-            // 
-            // btnAddCar
-            // 
-            this.btnAddCar.Font = new System.Drawing.Font("DINPro-Regular", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddCar.Location = new System.Drawing.Point(6, 19);
-            this.btnAddCar.Name = "btnAddCar";
-            this.btnAddCar.Size = new System.Drawing.Size(260, 52);
-            this.btnAddCar.TabIndex = 12;
-            this.btnAddCar.Text = "Add New Car";
-            this.btnAddCar.UseVisualStyleBackColor = true;
-            this.btnAddCar.Click += new System.EventHandler(this.btnAddCar_Click);
+            this.radAutoConnect.AutoSize = true;
+            this.radAutoConnect.Font = new System.Drawing.Font("DINPro-Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radAutoConnect.Location = new System.Drawing.Point(658, 69);
+            this.radAutoConnect.Name = "radAutoConnect";
+            this.radAutoConnect.Size = new System.Drawing.Size(185, 24);
+            this.radAutoConnect.TabIndex = 13;
+            this.radAutoConnect.Text = "Connect Automatically";
+            this.radAutoConnect.UseVisualStyleBackColor = true;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1146, 738);
+            this.Controls.Add(this.radAutoConnect);
             this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.lblCopyright);
             this.Controls.Add(this.lblMainHeading);
@@ -242,10 +255,10 @@
             this.pnlControlsBG.ResumeLayout(false);
             this.pnlControls.ResumeLayout(false);
             this.pnlControls.PerformLayout();
+            this.grpFunctionality.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlSimulationBG.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picAppLogo)).EndInit();
-            this.grpFunctionality.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -270,6 +283,7 @@
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.GroupBox grpFunctionality;
         private System.Windows.Forms.Button btnAddCar;
+        private System.Windows.Forms.CheckBox radAutoConnect;
     }
 }
 
