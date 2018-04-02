@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace TrafficLightClient
 {
@@ -21,9 +22,16 @@ namespace TrafficLightClient
         // Server status indication
         private bool connected = false;
 
+        // User preference indication
+        private bool autoconnect;
+
         // Method to style form elements & set form properties
         private void prepareForm()
         {
+            // evaluate autoconnect status
+            autoconnect = this.checkAutoConnect();
+            this.radAutoConnect.Checked = autoconnect;
+
             // set copyright date
             string currentYear = DateTime.Now.Year.ToString();
             this.lblCopyright.Text = "© " + currentYear + " James Hunt and Kyle Rusby Some Rights Reserved";
@@ -54,6 +62,12 @@ namespace TrafficLightClient
 
             // group boxes 
             this.grpFunctionality.Enabled = false;
+        }
+
+        // Method to invoke update regarding autoconnect preferences
+        private void radAutoConnect_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
 
         // Method to invoke connection from client application to server
@@ -112,6 +126,33 @@ namespace TrafficLightClient
         private void createNewCar()
         {
             // come back here...
+        }
+
+        // Method to see if user wishes to connect automatically (upon app open)
+        private bool checkAutoConnect()
+        {
+            string filePath = Environment.CurrentDirectory + @"\preferences.txt";
+            
+            if (File.Exists(filePath))
+            {
+                using (StreamReader mySR = new StreamReader(filePath))
+                {
+                    if (mySR.ReadLine() == "true")
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            return false;
+        }
+
+        private void updateAutoConnect()
+        {
+
         }
     }
 }

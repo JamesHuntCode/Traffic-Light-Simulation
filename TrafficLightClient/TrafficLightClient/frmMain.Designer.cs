@@ -234,6 +234,7 @@
             this.radAutoConnect.TabIndex = 13;
             this.radAutoConnect.Text = "Connect Automatically";
             this.radAutoConnect.UseVisualStyleBackColor = true;
+            this.radAutoConnect.CheckedChanged += new System.EventHandler(this.radAutoConnect_CheckedChanged);
             // 
             // frmMain
             // 
