@@ -94,11 +94,20 @@ namespace TrafficLightClient
 
             if (connected)
             {
-                // update form styles & content
-                this.updateForm("connected");
+                // put program in loading phase
+                this.updateForm("waiting");
 
                 // connect to server
                 this.connectToServer();
+
+                // mimic time delay (remove later) to simulate server loading times in application
+                Timer timer = new Timer();
+                timer.Interval = 3000;
+                timer.Tick += new EventHandler(callConnected);
+                timer.Start();
+
+                // display connected
+                //this.updateForm("connected");
             }
             else
             {
@@ -107,11 +116,14 @@ namespace TrafficLightClient
 
                 if (dialogResult == DialogResult.Yes)
                 {
-                    // update form styles & content
-                    this.updateForm("disconnected");
+                    // put program in loading phase
+                    this.updateForm("waiting");
 
                     // disconnect from server
                     this.disconnectFromServer();
+
+                    // display disconnected
+                    this.updateForm("disconnected");
                 }
             }
         }
@@ -174,6 +186,7 @@ namespace TrafficLightClient
             }
         }
 
+        // Method to display current status of server / program state
         private void updateForm(string status)
         {
             if (status == "connected")
@@ -182,6 +195,7 @@ namespace TrafficLightClient
                 this.lblServerState.Text = "Connected";
                 this.lblServerState.ForeColor = Color.Green;
                 this.grpFunctionality.Enabled = true;
+                this.btnConnect.Enabled = true;
             }
             else if (status == "disconnected")
             {
@@ -189,6 +203,7 @@ namespace TrafficLightClient
                 this.lblServerState.Text = "Disconnected";
                 this.lblServerState.ForeColor = Color.Red;
                 this.grpFunctionality.Enabled = false;
+                this.btnConnect.Enabled = true;
             }
             else
             {
@@ -198,6 +213,14 @@ namespace TrafficLightClient
                 this.grpFunctionality.Enabled = false;
                 this.btnConnect.Enabled = false;
             }
+        }
+
+        // REMOVE LATER - Method used to demo connection waiting times to program loading screen
+        private void callConnected(object sender, EventArgs e)
+        {
+            this.updateForm("connected");
+            Timer timer = (Timer)sender;
+            timer.Stop();
         }
     }
 }
