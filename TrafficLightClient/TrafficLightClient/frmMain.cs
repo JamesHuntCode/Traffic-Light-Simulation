@@ -65,6 +65,9 @@ namespace TrafficLightClient
                 // labels
                 this.lblServerState.Text = "Disconnected";
                 this.lblServerState.ForeColor = Color.Red;
+
+                // list box
+                this.lstServerEcho.Enabled = false;
             }
 
             // set copyright date
@@ -124,7 +127,7 @@ namespace TrafficLightClient
             else
             {
                 // make sure user wants to disconnect
-                DialogResult dialogResult = MessageBox.Show("Are you sure you wish to disconnect from the server?", "Alert!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to disconnect from the server?", "Alert!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (dialogResult == DialogResult.Yes)
                 {
@@ -208,6 +211,7 @@ namespace TrafficLightClient
                 this.lblServerState.ForeColor = Color.Green;
                 this.grpFunctionality.Enabled = true;
                 this.btnConnect.Enabled = true;
+                this.pushNotification("connected");
             }
             else if (status == "disconnected")
             {
@@ -216,11 +220,12 @@ namespace TrafficLightClient
                 this.lblServerState.ForeColor = Color.Red;
                 this.grpFunctionality.Enabled = false;
                 this.btnConnect.Enabled = true;
+                this.pushNotification("disconnected");
             }
             else
             {
                 this.btnConnect.Text = "Disconnect";
-                this.lblServerState.Text = "Loading...";
+                this.lblServerState.Text = "Connecting...";
                 this.lblServerState.ForeColor = Color.Teal;
                 this.grpFunctionality.Enabled = false;
                 this.btnConnect.Enabled = false;
@@ -234,6 +239,26 @@ namespace TrafficLightClient
             Timer timer = (Timer)sender;
             timer.Stop();
             this.stopProgressBar();
+        }
+
+        // Method to update list box with server responses etc
+        private void pushNotification(string type)
+        {
+            string theTime = DateTime.Now.ToShortTimeString();
+
+            switch (type)
+            {
+                case "connected":
+
+                    this.lstServerEcho.Items.Add("You connected to the sever @ " + theTime);
+
+                    break;
+                case "disconnected":
+
+                    this.lstServerEcho.Items.Add("You disconnected from the sever @ " + theTime);
+
+                    break;
+            }
         }
 
         // Method controlling the progress bar
