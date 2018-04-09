@@ -59,6 +59,8 @@ namespace TrafficLightClient
             }
             else
             {
+                connected = false;
+
                 // group boxes 
                 this.grpFunctionality.Enabled = false;
 
