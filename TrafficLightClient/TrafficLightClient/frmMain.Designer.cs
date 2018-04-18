@@ -28,13 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.pnlControlsBG = new System.Windows.Forms.Panel();
             this.pnlControls = new System.Windows.Forms.Panel();
             this.pbarConnecting = new System.Windows.Forms.ProgressBar();
             this.grpFunctionality = new System.Windows.Forms.GroupBox();
+            this.grpCarColors = new System.Windows.Forms.GroupBox();
+            this.radPurple = new System.Windows.Forms.RadioButton();
+            this.radPink = new System.Windows.Forms.RadioButton();
+            this.radOrange = new System.Windows.Forms.RadioButton();
+            this.radCyan = new System.Windows.Forms.RadioButton();
+            this.radGray = new System.Windows.Forms.RadioButton();
+            this.radBlack = new System.Windows.Forms.RadioButton();
+            this.radYellow = new System.Windows.Forms.RadioButton();
+            this.radBlue = new System.Windows.Forms.RadioButton();
+            this.redGreen = new System.Windows.Forms.RadioButton();
+            this.radRed = new System.Windows.Forms.RadioButton();
+            this.lblColorPref = new System.Windows.Forms.Label();
             this.btnAddCar = new System.Windows.Forms.Button();
+            this.lblAddCar = new System.Windows.Forms.Label();
             this.btnConnect = new System.Windows.Forms.Button();
             this.lblServerState = new System.Windows.Forms.Label();
             this.lblServerStatus = new System.Windows.Forms.Label();
@@ -49,27 +61,13 @@
             this.lblCopyright = new System.Windows.Forms.Label();
             this.lblVersion = new System.Windows.Forms.Label();
             this.radAutoConnect = new System.Windows.Forms.CheckBox();
-            this.tmrConnecting = new System.Windows.Forms.Timer(this.components);
-            this.lblColorPref = new System.Windows.Forms.Label();
-            this.lblAddCar = new System.Windows.Forms.Label();
-            this.grpCarColors = new System.Windows.Forms.GroupBox();
-            this.radRed = new System.Windows.Forms.RadioButton();
-            this.redGreen = new System.Windows.Forms.RadioButton();
-            this.radBlue = new System.Windows.Forms.RadioButton();
-            this.radYellow = new System.Windows.Forms.RadioButton();
-            this.radBlack = new System.Windows.Forms.RadioButton();
-            this.radPurple = new System.Windows.Forms.RadioButton();
-            this.radPink = new System.Windows.Forms.RadioButton();
-            this.radOrange = new System.Windows.Forms.RadioButton();
-            this.radCyan = new System.Windows.Forms.RadioButton();
-            this.radGray = new System.Windows.Forms.RadioButton();
             this.pnlControlsBG.SuspendLayout();
             this.pnlControls.SuspendLayout();
             this.grpFunctionality.SuspendLayout();
+            this.grpCarColors.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlSimulationBG.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAppLogo)).BeginInit();
-            this.grpCarColors.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlControlsBG
@@ -115,6 +113,154 @@
             this.grpFunctionality.TabIndex = 11;
             this.grpFunctionality.TabStop = false;
             // 
+            // grpCarColors
+            // 
+            this.grpCarColors.Controls.Add(this.radPurple);
+            this.grpCarColors.Controls.Add(this.radPink);
+            this.grpCarColors.Controls.Add(this.radOrange);
+            this.grpCarColors.Controls.Add(this.radCyan);
+            this.grpCarColors.Controls.Add(this.radGray);
+            this.grpCarColors.Controls.Add(this.radBlack);
+            this.grpCarColors.Controls.Add(this.radYellow);
+            this.grpCarColors.Controls.Add(this.radBlue);
+            this.grpCarColors.Controls.Add(this.redGreen);
+            this.grpCarColors.Controls.Add(this.radRed);
+            this.grpCarColors.Location = new System.Drawing.Point(6, 83);
+            this.grpCarColors.Name = "grpCarColors";
+            this.grpCarColors.Size = new System.Drawing.Size(260, 185);
+            this.grpCarColors.TabIndex = 16;
+            this.grpCarColors.TabStop = false;
+            // 
+            // radPurple
+            // 
+            this.radPurple.AutoSize = true;
+            this.radPurple.Font = new System.Drawing.Font("DINPro-Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radPurple.Location = new System.Drawing.Point(174, 140);
+            this.radPurple.Name = "radPurple";
+            this.radPurple.Size = new System.Drawing.Size(75, 24);
+            this.radPurple.TabIndex = 9;
+            this.radPurple.TabStop = true;
+            this.radPurple.Text = "Purple";
+            this.radPurple.UseVisualStyleBackColor = true;
+            // 
+            // radPink
+            // 
+            this.radPink.AutoSize = true;
+            this.radPink.Font = new System.Drawing.Font("DINPro-Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radPink.Location = new System.Drawing.Point(174, 110);
+            this.radPink.Name = "radPink";
+            this.radPink.Size = new System.Drawing.Size(59, 24);
+            this.radPink.TabIndex = 8;
+            this.radPink.TabStop = true;
+            this.radPink.Text = "Pink";
+            this.radPink.UseVisualStyleBackColor = true;
+            // 
+            // radOrange
+            // 
+            this.radOrange.AutoSize = true;
+            this.radOrange.Font = new System.Drawing.Font("DINPro-Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radOrange.Location = new System.Drawing.Point(175, 80);
+            this.radOrange.Name = "radOrange";
+            this.radOrange.Size = new System.Drawing.Size(78, 24);
+            this.radOrange.TabIndex = 7;
+            this.radOrange.TabStop = true;
+            this.radOrange.Text = "Orange";
+            this.radOrange.UseVisualStyleBackColor = true;
+            // 
+            // radCyan
+            // 
+            this.radCyan.AutoSize = true;
+            this.radCyan.Font = new System.Drawing.Font("DINPro-Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radCyan.Location = new System.Drawing.Point(174, 50);
+            this.radCyan.Name = "radCyan";
+            this.radCyan.Size = new System.Drawing.Size(61, 24);
+            this.radCyan.TabIndex = 6;
+            this.radCyan.TabStop = true;
+            this.radCyan.Text = "Cyan";
+            this.radCyan.UseVisualStyleBackColor = true;
+            // 
+            // radGray
+            // 
+            this.radGray.AutoSize = true;
+            this.radGray.Font = new System.Drawing.Font("DINPro-Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radGray.Location = new System.Drawing.Point(175, 20);
+            this.radGray.Name = "radGray";
+            this.radGray.Size = new System.Drawing.Size(59, 24);
+            this.radGray.TabIndex = 5;
+            this.radGray.TabStop = true;
+            this.radGray.Text = "Gray";
+            this.radGray.UseVisualStyleBackColor = true;
+            // 
+            // radBlack
+            // 
+            this.radBlack.AutoSize = true;
+            this.radBlack.Font = new System.Drawing.Font("DINPro-Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radBlack.Location = new System.Drawing.Point(6, 140);
+            this.radBlack.Name = "radBlack";
+            this.radBlack.Size = new System.Drawing.Size(68, 24);
+            this.radBlack.TabIndex = 4;
+            this.radBlack.TabStop = true;
+            this.radBlack.Text = "Black";
+            this.radBlack.UseVisualStyleBackColor = true;
+            // 
+            // radYellow
+            // 
+            this.radYellow.AutoSize = true;
+            this.radYellow.Font = new System.Drawing.Font("DINPro-Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radYellow.Location = new System.Drawing.Point(6, 110);
+            this.radYellow.Name = "radYellow";
+            this.radYellow.Size = new System.Drawing.Size(72, 24);
+            this.radYellow.TabIndex = 3;
+            this.radYellow.TabStop = true;
+            this.radYellow.Text = "Yellow";
+            this.radYellow.UseVisualStyleBackColor = true;
+            // 
+            // radBlue
+            // 
+            this.radBlue.AutoSize = true;
+            this.radBlue.Font = new System.Drawing.Font("DINPro-Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radBlue.Location = new System.Drawing.Point(7, 80);
+            this.radBlue.Name = "radBlue";
+            this.radBlue.Size = new System.Drawing.Size(60, 24);
+            this.radBlue.TabIndex = 2;
+            this.radBlue.TabStop = true;
+            this.radBlue.Text = "Blue";
+            this.radBlue.UseVisualStyleBackColor = true;
+            // 
+            // redGreen
+            // 
+            this.redGreen.AutoSize = true;
+            this.redGreen.Font = new System.Drawing.Font("DINPro-Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.redGreen.Location = new System.Drawing.Point(6, 50);
+            this.redGreen.Name = "redGreen";
+            this.redGreen.Size = new System.Drawing.Size(68, 24);
+            this.redGreen.TabIndex = 1;
+            this.redGreen.TabStop = true;
+            this.redGreen.Text = "Green";
+            this.redGreen.UseVisualStyleBackColor = true;
+            // 
+            // radRed
+            // 
+            this.radRed.AutoSize = true;
+            this.radRed.Font = new System.Drawing.Font("DINPro-Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radRed.Location = new System.Drawing.Point(7, 20);
+            this.radRed.Name = "radRed";
+            this.radRed.Size = new System.Drawing.Size(54, 24);
+            this.radRed.TabIndex = 0;
+            this.radRed.TabStop = true;
+            this.radRed.Text = "Red";
+            this.radRed.UseVisualStyleBackColor = true;
+            // 
+            // lblColorPref
+            // 
+            this.lblColorPref.AutoSize = true;
+            this.lblColorPref.Font = new System.Drawing.Font("DINPro-Regular", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblColorPref.Location = new System.Drawing.Point(56, 56);
+            this.lblColorPref.Name = "lblColorPref";
+            this.lblColorPref.Size = new System.Drawing.Size(149, 24);
+            this.lblColorPref.TabIndex = 15;
+            this.lblColorPref.Text = "Pick Car Colour:";
+            // 
             // btnAddCar
             // 
             this.btnAddCar.Font = new System.Drawing.Font("DINPro-Regular", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -125,6 +271,16 @@
             this.btnAddCar.Text = "Add New Car";
             this.btnAddCar.UseVisualStyleBackColor = true;
             this.btnAddCar.Click += new System.EventHandler(this.btnAddCar_Click);
+            // 
+            // lblAddCar
+            // 
+            this.lblAddCar.AutoSize = true;
+            this.lblAddCar.Font = new System.Drawing.Font("DINPro-Regular", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddCar.Location = new System.Drawing.Point(45, 16);
+            this.lblAddCar.Name = "lblAddCar";
+            this.lblAddCar.Size = new System.Drawing.Size(171, 35);
+            this.lblAddCar.TabIndex = 15;
+            this.lblAddCar.Text = "Add New Car";
             // 
             // btnConnect
             // 
@@ -264,168 +420,6 @@
             this.radAutoConnect.UseVisualStyleBackColor = true;
             this.radAutoConnect.CheckedChanged += new System.EventHandler(this.radAutoConnect_CheckedChanged);
             // 
-            // tmrConnecting
-            // 
-            this.tmrConnecting.Tick += new System.EventHandler(this.tmrConnecting_Tick);
-            // 
-            // lblColorPref
-            // 
-            this.lblColorPref.AutoSize = true;
-            this.lblColorPref.Font = new System.Drawing.Font("DINPro-Regular", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblColorPref.Location = new System.Drawing.Point(56, 56);
-            this.lblColorPref.Name = "lblColorPref";
-            this.lblColorPref.Size = new System.Drawing.Size(149, 24);
-            this.lblColorPref.TabIndex = 15;
-            this.lblColorPref.Text = "Pick Car Colour:";
-            // 
-            // lblAddCar
-            // 
-            this.lblAddCar.AutoSize = true;
-            this.lblAddCar.Font = new System.Drawing.Font("DINPro-Regular", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddCar.Location = new System.Drawing.Point(45, 16);
-            this.lblAddCar.Name = "lblAddCar";
-            this.lblAddCar.Size = new System.Drawing.Size(171, 35);
-            this.lblAddCar.TabIndex = 15;
-            this.lblAddCar.Text = "Add New Car";
-            // 
-            // grpCarColors
-            // 
-            this.grpCarColors.Controls.Add(this.radPurple);
-            this.grpCarColors.Controls.Add(this.radPink);
-            this.grpCarColors.Controls.Add(this.radOrange);
-            this.grpCarColors.Controls.Add(this.radCyan);
-            this.grpCarColors.Controls.Add(this.radGray);
-            this.grpCarColors.Controls.Add(this.radBlack);
-            this.grpCarColors.Controls.Add(this.radYellow);
-            this.grpCarColors.Controls.Add(this.radBlue);
-            this.grpCarColors.Controls.Add(this.redGreen);
-            this.grpCarColors.Controls.Add(this.radRed);
-            this.grpCarColors.Location = new System.Drawing.Point(6, 83);
-            this.grpCarColors.Name = "grpCarColors";
-            this.grpCarColors.Size = new System.Drawing.Size(260, 185);
-            this.grpCarColors.TabIndex = 16;
-            this.grpCarColors.TabStop = false;
-            // 
-            // radRed
-            // 
-            this.radRed.AutoSize = true;
-            this.radRed.Font = new System.Drawing.Font("DINPro-Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radRed.Location = new System.Drawing.Point(7, 20);
-            this.radRed.Name = "radRed";
-            this.radRed.Size = new System.Drawing.Size(54, 24);
-            this.radRed.TabIndex = 0;
-            this.radRed.TabStop = true;
-            this.radRed.Text = "Red";
-            this.radRed.UseVisualStyleBackColor = true;
-            // 
-            // redGreen
-            // 
-            this.redGreen.AutoSize = true;
-            this.redGreen.Font = new System.Drawing.Font("DINPro-Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.redGreen.Location = new System.Drawing.Point(6, 50);
-            this.redGreen.Name = "redGreen";
-            this.redGreen.Size = new System.Drawing.Size(68, 24);
-            this.redGreen.TabIndex = 1;
-            this.redGreen.TabStop = true;
-            this.redGreen.Text = "Green";
-            this.redGreen.UseVisualStyleBackColor = true;
-            // 
-            // radBlue
-            // 
-            this.radBlue.AutoSize = true;
-            this.radBlue.Font = new System.Drawing.Font("DINPro-Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radBlue.Location = new System.Drawing.Point(7, 80);
-            this.radBlue.Name = "radBlue";
-            this.radBlue.Size = new System.Drawing.Size(60, 24);
-            this.radBlue.TabIndex = 2;
-            this.radBlue.TabStop = true;
-            this.radBlue.Text = "Blue";
-            this.radBlue.UseVisualStyleBackColor = true;
-            // 
-            // radYellow
-            // 
-            this.radYellow.AutoSize = true;
-            this.radYellow.Font = new System.Drawing.Font("DINPro-Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radYellow.Location = new System.Drawing.Point(6, 110);
-            this.radYellow.Name = "radYellow";
-            this.radYellow.Size = new System.Drawing.Size(72, 24);
-            this.radYellow.TabIndex = 3;
-            this.radYellow.TabStop = true;
-            this.radYellow.Text = "Yellow";
-            this.radYellow.UseVisualStyleBackColor = true;
-            // 
-            // radBlack
-            // 
-            this.radBlack.AutoSize = true;
-            this.radBlack.Font = new System.Drawing.Font("DINPro-Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radBlack.Location = new System.Drawing.Point(6, 140);
-            this.radBlack.Name = "radBlack";
-            this.radBlack.Size = new System.Drawing.Size(68, 24);
-            this.radBlack.TabIndex = 4;
-            this.radBlack.TabStop = true;
-            this.radBlack.Text = "Black";
-            this.radBlack.UseVisualStyleBackColor = true;
-            // 
-            // radPurple
-            // 
-            this.radPurple.AutoSize = true;
-            this.radPurple.Font = new System.Drawing.Font("DINPro-Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radPurple.Location = new System.Drawing.Point(174, 140);
-            this.radPurple.Name = "radPurple";
-            this.radPurple.Size = new System.Drawing.Size(75, 24);
-            this.radPurple.TabIndex = 9;
-            this.radPurple.TabStop = true;
-            this.radPurple.Text = "Purple";
-            this.radPurple.UseVisualStyleBackColor = true;
-            // 
-            // radPink
-            // 
-            this.radPink.AutoSize = true;
-            this.radPink.Font = new System.Drawing.Font("DINPro-Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radPink.Location = new System.Drawing.Point(174, 110);
-            this.radPink.Name = "radPink";
-            this.radPink.Size = new System.Drawing.Size(59, 24);
-            this.radPink.TabIndex = 8;
-            this.radPink.TabStop = true;
-            this.radPink.Text = "Pink";
-            this.radPink.UseVisualStyleBackColor = true;
-            // 
-            // radOrange
-            // 
-            this.radOrange.AutoSize = true;
-            this.radOrange.Font = new System.Drawing.Font("DINPro-Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radOrange.Location = new System.Drawing.Point(175, 80);
-            this.radOrange.Name = "radOrange";
-            this.radOrange.Size = new System.Drawing.Size(78, 24);
-            this.radOrange.TabIndex = 7;
-            this.radOrange.TabStop = true;
-            this.radOrange.Text = "Orange";
-            this.radOrange.UseVisualStyleBackColor = true;
-            // 
-            // radCyan
-            // 
-            this.radCyan.AutoSize = true;
-            this.radCyan.Font = new System.Drawing.Font("DINPro-Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radCyan.Location = new System.Drawing.Point(174, 50);
-            this.radCyan.Name = "radCyan";
-            this.radCyan.Size = new System.Drawing.Size(61, 24);
-            this.radCyan.TabIndex = 6;
-            this.radCyan.TabStop = true;
-            this.radCyan.Text = "Cyan";
-            this.radCyan.UseVisualStyleBackColor = true;
-            // 
-            // radGray
-            // 
-            this.radGray.AutoSize = true;
-            this.radGray.Font = new System.Drawing.Font("DINPro-Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radGray.Location = new System.Drawing.Point(175, 20);
-            this.radGray.Name = "radGray";
-            this.radGray.Size = new System.Drawing.Size(59, 24);
-            this.radGray.TabIndex = 5;
-            this.radGray.TabStop = true;
-            this.radGray.Text = "Gray";
-            this.radGray.UseVisualStyleBackColor = true;
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -448,11 +442,11 @@
             this.pnlControls.PerformLayout();
             this.grpFunctionality.ResumeLayout(false);
             this.grpFunctionality.PerformLayout();
+            this.grpCarColors.ResumeLayout(false);
+            this.grpCarColors.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlSimulationBG.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picAppLogo)).EndInit();
-            this.grpCarColors.ResumeLayout(false);
-            this.grpCarColors.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -479,7 +473,6 @@
         private System.Windows.Forms.Button btnAddCar;
         private System.Windows.Forms.CheckBox radAutoConnect;
         private System.Windows.Forms.ProgressBar pbarConnecting;
-        private System.Windows.Forms.Timer tmrConnecting;
         private System.Windows.Forms.Label lblColorPref;
         private System.Windows.Forms.Label lblAddCar;
         private System.Windows.Forms.GroupBox grpCarColors;

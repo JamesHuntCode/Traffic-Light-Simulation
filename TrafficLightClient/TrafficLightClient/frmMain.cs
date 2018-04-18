@@ -15,9 +15,6 @@ namespace TrafficLightClient
 {
     public partial class frmMain : Form
     {
-        private string serverIP = "insert ip here";
-        private int portNumber = 8080;
-
         public frmMain()
         {
             InitializeComponent();
@@ -42,20 +39,11 @@ namespace TrafficLightClient
 
             if (autoconnectStatus)
             {
+                this.updateForm("waiting");
+
                 if (connected)
                 {
-                    // put program in loading phase
-                    this.updateForm("waiting");
-                    this.tmrConnecting.Enabled = true;
-
-                    // mimic time delay (remove later) to simulate server loading times in application
-                    Timer timer = new Timer();
-                    timer.Interval = 3000;
-                    timer.Tick += new EventHandler(callConnected);
-                    timer.Start();
-
-                    // display connected
-                    //this.updateForm("connected");
+                    this.updateForm("connected");
                 }
                 else
                 {
@@ -101,6 +89,7 @@ namespace TrafficLightClient
                 buttons[i].BackColor = ColorTranslator.FromHtml("#ffffff");
             }
 
+            // radio buttons
             this.radRed.Checked = true;
         }
 
@@ -117,21 +106,11 @@ namespace TrafficLightClient
 
             if (connected)
             {
-                // put program in loading phase
                 this.updateForm("waiting");
-                this.tmrConnecting.Enabled = true;
 
                 // connect to server
                 this.connectToServer();
-
-                // mimic time delay (remove later) to simulate server loading times in application
-                Timer timer = new Timer();
-                timer.Interval = 3000;
-                timer.Tick += new EventHandler(callConnected);
-                timer.Start();
-
-                // display connected
-                //this.updateForm("connected");
+                this.updateForm("connected");
             }
             else
             {
@@ -241,15 +220,6 @@ namespace TrafficLightClient
             }
         }
 
-        // REMOVE LATER - Method used to demo connection waiting times to program loading screen
-        private void callConnected(object sender, EventArgs e)
-        {
-            this.updateForm("connected");
-            Timer timer = (Timer)sender;
-            timer.Stop();
-            this.stopProgressBar();
-        }
-
         // Method to update list box with server responses etc
         private void pushNotification(string type)
         {
@@ -268,25 +238,6 @@ namespace TrafficLightClient
 
                     break;
             }
-        }
-
-        // Method controlling the progress bar
-        private void tmrConnecting_Tick(object sender, EventArgs e)
-        {
-            this.pbarConnecting.Value += 4;
-
-            if (this.pbarConnecting.Value > 99)
-            {
-                this.pbarConnecting.Value = 0;
-                this.tmrConnecting.Enabled = false;
-            }
-        }
-
-        // Method stopping & resetting the progress bar 
-        private void stopProgressBar()
-        {
-            this.tmrConnecting.Enabled = false;
-            this.pbarConnecting.Value = 0;
         }
     }
 }
