@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
+using System.Threading;
 
 namespace TrafficLightClient
 {
@@ -21,25 +22,56 @@ namespace TrafficLightClient
             this.prepareForm();
         }
 
-        // Server status indication
         private bool connected;
-
-        // User preference indication
         private bool autoconnectStatus;
+        SynchronizationContext uiContext = null;
+
+        /* ------------- Networking attributes -------------- */
+        private int portNumber = 8080;
+        private int bufferSize = 200;
+        private TcpClient client = null;
+        private string server = "eeyore.fost.plymouth.ac.uk";
+        private NetworkStream connectionStream = null;
+        private BinaryReader inStream = null;
+        private BinaryWriter outStream = null;
+        private ThreadConnection threadConnection = null;
+        /* ---------------------------------------------------*/
 
         // Method to style form elements & set form properties
         private void prepareForm()
         {
-            // evaluate autoconnect status
+            // output user's IP information
+            IPHostEntry currentPCInfo = Dns.GetHostEntry(Dns.GetHostName());
+            this.createMessageBreak();
+            foreach (IPAddress address in currentPCInfo.AddressList)
+            {
+                this.lstServerEcho.Items.Add(address.ToString());
+            }
+            this.createMessageBreak();
+
+            // get sync-context for current form thread 
+            uiContext = SynchronizationContext.Current;
+            if (this.uiContext == null)
+            {
+                lstServerEcho.Items.Add("No context established.");
+            }
+            else
+            {
+                lstServerEcho.Items.Add("Context established.");
+            }
+            this.createMessageBreak();
+
+            // begin initiation connection (if required)
             autoconnectStatus = this.checkAutoConnect();
             this.radAutoConnect.Checked = autoconnectStatus;
             this.updateAutoConnect(autoconnectStatus);
 
-            connected = this.connectToServer();
+            connected = false;
 
             if (autoconnectStatus)
             {
                 this.updateForm("waiting");
+                connected = this.connectToServer();
 
                 if (connected)
                 {
@@ -60,9 +92,6 @@ namespace TrafficLightClient
                 // labels
                 this.lblServerState.Text = "Disconnected";
                 this.lblServerState.ForeColor = Color.Red;
-
-                // list box
-                this.lstServerEcho.Enabled = false;
             }
 
             // set copyright date
@@ -93,6 +122,22 @@ namespace TrafficLightClient
             this.radRed.Checked = true;
         }
 
+        // Invoke method to safely exit application
+        private void frmMain_FormClosing(object sender, FormClosedEventArgs e)
+        {
+            this.closeForm();
+        }
+
+        // Method invoked when application is terminated
+        private void closeForm()
+        {
+            if (this.threadConnection != null)
+            {
+                // kill current connection
+                //this.threadConnection.StopThread();
+            }
+        }
+
         // Method to invoke update regarding autoconnect preferences
         private void radAutoConnect_CheckedChanged(object sender, EventArgs e)
         {
@@ -119,13 +164,10 @@ namespace TrafficLightClient
 
                 if (dialogResult == DialogResult.Yes)
                 {
-                    // put program in loading phase
                     this.updateForm("waiting");
 
                     // disconnect from server
                     this.disconnectFromServer();
-
-                    // display disconnected
                     this.updateForm("disconnected");
                 }
             }
@@ -238,6 +280,12 @@ namespace TrafficLightClient
 
                     break;
             }
+        }
+
+        // Method called when break is needed between server echo messages
+        private void createMessageBreak()
+        {
+            this.lstServerEcho.Items.Add("-------------------------------------------");
         }
     }
 }
