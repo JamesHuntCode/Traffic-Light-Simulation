@@ -100,6 +100,8 @@ namespace TrafficLightClient
                 buttons[i].FlatAppearance.BorderSize = 2;
                 buttons[i].BackColor = ColorTranslator.FromHtml("#ffffff");
             }
+
+            this.radRed.Checked = true;
         }
 
         // Method to invoke update regarding autoconnect preferences
