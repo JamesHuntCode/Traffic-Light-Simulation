@@ -8,11 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Net;
+using System.Net.Sockets;
 
 namespace TrafficLightClient
 {
     public partial class frmMain : Form
     {
+        private string serverIP = "insert ip here";
+        private int portNumber = 8080;
+
         public frmMain()
         {
             InitializeComponent();
@@ -165,10 +170,10 @@ namespace TrafficLightClient
             return true;
         }
 
-        private bool createNewCar()
+        // Method to allow clients to add new cars to server
+        private void createNewCar()
         {
             // come back here...
-            return true;
         }
 
         // Method to see if user wishes to connect automatically (upon app open)

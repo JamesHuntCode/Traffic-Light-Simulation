@@ -11,6 +11,10 @@ namespace TrafficLightClient
     {
         public float PosX { get; set; }
         public float PosY { get; set; }
+
+        public float Height = 20;
+        public float Width = 20;
+
         public Color Col { get; set; }
 
         public Car(float x, float y, string c)
