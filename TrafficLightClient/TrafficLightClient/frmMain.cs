@@ -186,7 +186,6 @@ namespace TrafficLightClient
                     this.disconnectFromServer();
                     this.updateForm("disconnected");
                     this.pushNotification("disconnected");
-                    this.createMessageBreak();
                 }
             }
         }
@@ -200,7 +199,33 @@ namespace TrafficLightClient
         // Method to connect client application to server
         private bool connectToServer()
         {
-            return true;
+            bool connected = false;
+            bool tempConnection = false;
+
+            try
+            {
+                this.client = new TcpClient(server, portNumber);
+                tempConnection = true;
+            }
+            catch (Exception)
+            {
+                connected = false;
+                tempConnection = false;
+            }
+
+            if (tempConnection)
+            {
+                if (this.client == null)
+                {
+                    connected = false;
+                }
+                else
+                {
+                    // run connections from here...
+                }
+            }
+
+            return connected;
         }
 
         // Method to break connection from client application to server
@@ -302,6 +327,7 @@ namespace TrafficLightClient
 
                     break;
             }
+            this.createMessageBreak();
         }
 
         // Method called when break is needed between server echo messages
