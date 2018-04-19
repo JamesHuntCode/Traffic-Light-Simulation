@@ -76,10 +76,14 @@ namespace TrafficLightClient
                 if (connected)
                 {
                     this.updateForm("connected");
+                    this.connected = true;
                 }
                 else
                 {
                     MessageBox.Show(text: "Oops! There has been an error connecting to the server. Please try again later.");
+                    this.pushNotification("failure");
+                    this.connected = false;
+                    this.updateForm("disconnected");
                 }
             }
             else
@@ -154,8 +158,20 @@ namespace TrafficLightClient
                 this.updateForm("waiting");
 
                 // connect to server
-                this.connectToServer();
-                this.updateForm("connected");
+                bool connection = this.connectToServer();
+
+                if (connection)
+                {
+                    this.updateForm("connected");
+                    this.connected = true;
+                }
+                else
+                {
+                    MessageBox.Show(text: "Oops! There has been an error connecting to the server. Please try again later.");
+                    this.pushNotification("failure");
+                    this.updateForm("disconnected");
+                    this.connected = false;
+                }
             }
             else
             {
@@ -169,6 +185,8 @@ namespace TrafficLightClient
                     // disconnect from server
                     this.disconnectFromServer();
                     this.updateForm("disconnected");
+                    this.pushNotification("disconnected");
+                    this.createMessageBreak();
                 }
             }
         }
@@ -182,7 +200,6 @@ namespace TrafficLightClient
         // Method to connect client application to server
         private bool connectToServer()
         {
-            // come back here...
             return true;
         }
 
@@ -242,6 +259,7 @@ namespace TrafficLightClient
                 this.grpFunctionality.Enabled = true;
                 this.btnConnect.Enabled = true;
                 this.pushNotification("connected");
+                this.createMessageBreak();
             }
             else if (status == "disconnected")
             {
@@ -250,7 +268,6 @@ namespace TrafficLightClient
                 this.lblServerState.ForeColor = Color.Red;
                 this.grpFunctionality.Enabled = false;
                 this.btnConnect.Enabled = true;
-                this.pushNotification("disconnected");
             }
             else
             {
@@ -277,6 +294,11 @@ namespace TrafficLightClient
                 case "disconnected":
 
                     this.lstServerEcho.Items.Add("You disconnected from the sever @ " + theTime);
+
+                    break;
+                case "failure":
+
+                    this.lstServerEcho.Items.Add("Server connection failed @ " + theTime);
 
                     break;
             }
