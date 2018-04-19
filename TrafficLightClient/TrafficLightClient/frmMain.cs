@@ -251,7 +251,7 @@ namespace TrafficLightClient
         }
 
         // Method to allow clients to add new cars to server
-        private void createNewCar()
+        private void createNewCar(string color)
         {
             // come back here...
         }
@@ -349,6 +349,74 @@ namespace TrafficLightClient
         private void createMessageBreak()
         {
             this.lstServerEcho.Items.Add("-------------------------------------------");
+        }
+
+        // Method used to get hex value of predefined color
+        private string getHex(string color)
+        {
+            string colorCode = "";
+
+            switch (color)
+            {
+                case "red":
+
+                    colorCode = Convert.ToString(ColorTranslator.FromHtml("#FF0000"));
+
+                    break;
+                case "green":
+
+                    colorCode = Convert.ToString(ColorTranslator.FromHtml("#008000"));
+
+                    break;
+                case "blue":
+
+                    colorCode = Convert.ToString(ColorTranslator.FromHtml("0000FF"));
+
+                    break;
+                case "yellow":
+
+                    colorCode = Convert.ToString(ColorTranslator.FromHtml("F7DC6F"));
+
+                    break;
+                case "black":
+
+                    colorCode = Convert.ToString(ColorTranslator.FromHtml("#333"));
+
+                    break;
+                case "gray":
+
+                    colorCode = Convert.ToString(ColorTranslator.FromHtml("#616A6B"));
+
+                    break;
+                case "cyan":
+
+                    colorCode = Convert.ToString(ColorTranslator.FromHtml("#1ABC9C"));
+
+                    break;
+                case "orange":
+
+                    colorCode = Convert.ToString(ColorTranslator.FromHtml("#D35400"));
+
+                    break;
+                case "pink":
+
+                    colorCode = Convert.ToString(ColorTranslator.FromHtml("#AF7AC5"));
+
+                    break;
+                case "purple":
+
+                    colorCode = Convert.ToString(ColorTranslator.FromHtml("#7D3C98"));
+
+                    break;
+            }
+
+            return colorCode;
+        }
+
+        // Method used to get color for new car
+        private void getCarColor()
+        {
+
         }
     }
 }
