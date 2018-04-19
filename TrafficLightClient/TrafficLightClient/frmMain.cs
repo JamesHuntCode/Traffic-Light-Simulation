@@ -204,7 +204,7 @@ namespace TrafficLightClient
 
             try
             {
-                this.client = new TcpClient(server, portNumber);
+                this.client = new TcpClient(server, portNumber); // will freeze program if ran anywhere but uni... (set to true to debug UI)
                 tempConnection = true;
             }
             catch (Exception)
@@ -221,7 +221,7 @@ namespace TrafficLightClient
                 }
                 else
                 {
-                    // run connections from here...
+                    // establish connections from here...
                 }
             }
 
@@ -229,10 +229,13 @@ namespace TrafficLightClient
         }
 
         // Method to break connection from client application to server
-        private bool disconnectFromServer()
+        private void disconnectFromServer()
         {
-            // come back here...
-            return true;
+            if (this.threadConnection != null)
+            {
+                // kill current connection
+                //this.threadConnection.StopThread();
+            }
         }
 
         // Method to allow clients to add new cars to server
