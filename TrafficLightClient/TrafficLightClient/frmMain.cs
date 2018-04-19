@@ -138,7 +138,7 @@ namespace TrafficLightClient
             if (this.threadConnection != null)
             {
                 // kill current connection
-                //this.threadConnection.StopThread();
+                this.threadConnection.StopThread();
             }
         }
 
@@ -204,7 +204,7 @@ namespace TrafficLightClient
 
             try
             {
-                this.client = new TcpClient(server, portNumber); // will freeze program if ran anywhere but uni... (set to true to debug UI)
+                this.client = new TcpClient(server, portNumber); // will freeze program if ran anywhere but uni... (comment out to debug)
                 tempConnection = true;
             }
             catch (Exception)
@@ -221,7 +221,19 @@ namespace TrafficLightClient
                 }
                 else
                 {
-                    // establish connections from here...
+                    // create streams
+                    this.connectionStream = this.client.GetStream();
+                    this.inStream = new BinaryReader(this.connectionStream);
+                    this.outStream = new BinaryWriter(this.connectionStream);
+
+                    this.lstServerEcho.Items.Add("Socket connected to: " + this.server);
+                    this.createMessageBreak();
+
+                    // if needed... update form to connected here...
+
+                    // new thread created to manage incoming data connection
+                    this.threadConnection = new ThreadConnection(this.uiContext, this.client, this);
+                    Thread threadRunner = new Thread(new ThreadStart(this.threadConnection.Run));
                 }
             }
 
@@ -234,7 +246,7 @@ namespace TrafficLightClient
             if (this.threadConnection != null)
             {
                 // kill current connection
-                //this.threadConnection.StopThread();
+                this.threadConnection.StopThread();
             }
         }
 
