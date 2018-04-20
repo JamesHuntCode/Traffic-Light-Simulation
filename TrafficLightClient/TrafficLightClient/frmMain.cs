@@ -34,7 +34,7 @@ namespace TrafficLightClient
         private NetworkStream connectionStream = null;
         private BinaryReader inStream = null;
         private BinaryWriter outStream = null;
-        private ThreadConnection threadConnection = null;
+        private ConnectionThread threadConnection = null;
         /* ---------------------------------------------------*/
 
         // Method to style form elements & set form properties
@@ -148,6 +148,12 @@ namespace TrafficLightClient
             this.updateAutoConnect(!autoconnectStatus);
         }
 
+        // Method to handle incoming data from server
+        public void messageReceived(Object thing)
+        {
+
+        }
+
         // Method to invoke connection from client application to server
         private void btnConnect_Click(object sender, EventArgs e)
         {
@@ -236,7 +242,7 @@ namespace TrafficLightClient
                     // if needed... update form to connected here...
 
                     // new thread created to manage incoming data connection
-                    this.threadConnection = new ThreadConnection(this.uiContext, this.client, this);
+                    this.threadConnection = new ConnectionThread(this.uiContext, this.client, this);
                     Thread threadRunner = new Thread(new ThreadStart(this.threadConnection.Run));
                 }
             }
