@@ -6,7 +6,11 @@ Requirements of the system:
  - Client can add / remove cars into the system.
  - If any given traffic light has 10 cars waiting, server must change light to green (from red).
  
- Extra features of the implemented system:
-  - A full GUI (animations of cars passing lights).
-  - Taken advantage of an effective routing algorithm for the cars (A*).
-  - Multi-client support. 
+Extra features of the implemented system:
+ - A full GUI (animations of cars passing lights).
+ - Taken advantage of an effective routing algorithm for the cars (A*).
+ - Multi-client support. 
+
+Credit:
+ - Traffic Light Client Application - James Hunt (github.com/jameshuntcode)
+ - Traffic Light Server - Kyle Rusby (github.com/Xufysz)
