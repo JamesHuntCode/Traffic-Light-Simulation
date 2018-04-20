@@ -13,10 +13,28 @@ namespace TrafficLightClient
 {
     public class ThreadConnection
     {
-        // Constructor / Create listening socket
-        public ThreadConnection(SynchronizationContext context, TcpClient newClient, Form mainForm)
-        {
+        /* -------------- Class Properties -------------- */
+        NetworkStream stream = null;
+        frmMain owner = null;
+        BinaryReader inStream = null;
+        BinaryWriter outStream = null;
+        TcpClient client = null;
+        int bufferSize = 200;
+        byte[] address = new byte[4];
+        bool running = true;
+        SynchronizationContext uiContext = null;
+        /* ---------------------------------------------- */
 
+
+        // Constructor ( Create listening socket )
+        public ThreadConnection(SynchronizationContext context, TcpClient newClient, frmMain mainForm)
+        {
+            this.client = newClient;
+            this.stream = this.client.GetStream();
+            this.owner = mainForm;
+            this.uiContext = context;
+            this.inStream = new BinaryReader(stream);
+            this.outStream = new BinaryWriter(stream);
         }
 
         // Method to transform class instance into seperate thead
