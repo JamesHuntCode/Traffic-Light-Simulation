@@ -193,7 +193,9 @@ namespace TrafficLightClient
         // Method to invoke the addition of a new car to the server
         private void btnAddCar_Click(object sender, EventArgs e)
         {
-            this.createNewCar();
+            string color = this.getCarColor();
+            string hex = this.getHex(color);
+            this.createNewCar(hex);
         }
 
         // Method to connect client application to server
@@ -204,12 +206,12 @@ namespace TrafficLightClient
 
             try
             {
-                this.client = new TcpClient(server, portNumber); // will freeze program if ran anywhere but uni... (comment out to debug)
+                this.client = new TcpClient(this.server, this.portNumber); // will freeze program if ran anywhere but uni... (comment out to debug)
                 tempConnection = true;
             }
             catch (Exception)
             {
-                connected = false;
+                this.connected = false;
                 tempConnection = false;
             }
 
@@ -217,10 +219,12 @@ namespace TrafficLightClient
             {
                 if (this.client == null)
                 {
-                    connected = false;
+                    this.connected = false;
                 }
                 else
                 {
+                    this.connected = true;
+
                     // create streams
                     this.connectionStream = this.client.GetStream();
                     this.inStream = new BinaryReader(this.connectionStream);
@@ -299,7 +303,6 @@ namespace TrafficLightClient
                 this.grpFunctionality.Enabled = true;
                 this.btnConnect.Enabled = true;
                 this.pushNotification("connected");
-                this.createMessageBreak();
             }
             else if (status == "disconnected")
             {
@@ -370,12 +373,12 @@ namespace TrafficLightClient
                     break;
                 case "blue":
 
-                    colorCode = Convert.ToString(ColorTranslator.FromHtml("0000FF"));
+                    colorCode = Convert.ToString(ColorTranslator.FromHtml("#0000FF"));
 
                     break;
                 case "yellow":
 
-                    colorCode = Convert.ToString(ColorTranslator.FromHtml("F7DC6F"));
+                    colorCode = Convert.ToString(ColorTranslator.FromHtml("#F7DC6F"));
 
                     break;
                 case "black":
@@ -414,9 +417,24 @@ namespace TrafficLightClient
         }
 
         // Method used to get color for new car
-        private void getCarColor()
+        private string getCarColor()
         {
+            string color = "";
+            RadioButton selected = new RadioButton();
 
+            RadioButton[] radioButtons = { this.radRed, this.radGreen, this.radBlue, this.radYellow, this.radBlack, this.radGray, this.radCyan, this.radOrange, this.radPink, this.radPurple };
+
+            for (int i = 0; i < radioButtons.Length; i++)
+            {
+                if (radioButtons[i].Checked)
+                {
+                    selected = radioButtons[i];
+                }
+            }
+
+            color = selected.Text.ToLower();
+
+            return color;
         }
     }
 }

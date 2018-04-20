@@ -42,7 +42,7 @@
             this.radBlack = new System.Windows.Forms.RadioButton();
             this.radYellow = new System.Windows.Forms.RadioButton();
             this.radBlue = new System.Windows.Forms.RadioButton();
-            this.redGreen = new System.Windows.Forms.RadioButton();
+            this.radGreen = new System.Windows.Forms.RadioButton();
             this.radRed = new System.Windows.Forms.RadioButton();
             this.lblColorPref = new System.Windows.Forms.Label();
             this.btnAddCar = new System.Windows.Forms.Button();
@@ -123,7 +123,7 @@
             this.grpCarColors.Controls.Add(this.radBlack);
             this.grpCarColors.Controls.Add(this.radYellow);
             this.grpCarColors.Controls.Add(this.radBlue);
-            this.grpCarColors.Controls.Add(this.redGreen);
+            this.grpCarColors.Controls.Add(this.radGreen);
             this.grpCarColors.Controls.Add(this.radRed);
             this.grpCarColors.Location = new System.Drawing.Point(6, 83);
             this.grpCarColors.Name = "grpCarColors";
@@ -227,17 +227,17 @@
             this.radBlue.Text = "Blue";
             this.radBlue.UseVisualStyleBackColor = true;
             // 
-            // redGreen
+            // radGreen
             // 
-            this.redGreen.AutoSize = true;
-            this.redGreen.Font = new System.Drawing.Font("DINPro-Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.redGreen.Location = new System.Drawing.Point(6, 50);
-            this.redGreen.Name = "redGreen";
-            this.redGreen.Size = new System.Drawing.Size(68, 24);
-            this.redGreen.TabIndex = 1;
-            this.redGreen.TabStop = true;
-            this.redGreen.Text = "Green";
-            this.redGreen.UseVisualStyleBackColor = true;
+            this.radGreen.AutoSize = true;
+            this.radGreen.Font = new System.Drawing.Font("DINPro-Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radGreen.Location = new System.Drawing.Point(6, 50);
+            this.radGreen.Name = "radGreen";
+            this.radGreen.Size = new System.Drawing.Size(68, 24);
+            this.radGreen.TabIndex = 1;
+            this.radGreen.TabStop = true;
+            this.radGreen.Text = "Green";
+            this.radGreen.UseVisualStyleBackColor = true;
             // 
             // radRed
             // 
@@ -484,7 +484,7 @@
         private System.Windows.Forms.RadioButton radBlack;
         private System.Windows.Forms.RadioButton radYellow;
         private System.Windows.Forms.RadioButton radBlue;
-        private System.Windows.Forms.RadioButton redGreen;
+        private System.Windows.Forms.RadioButton radGreen;
         private System.Windows.Forms.RadioButton radRed;
     }
 }
