@@ -151,7 +151,10 @@ namespace TrafficLightClient
         // Method to handle incoming data from server
         public void messageReceived(Object thing)
         {
-
+            String message = (String)thing;
+            this.lstServerEcho.Items.Add(message);
+            this.createMessageBreak();
+            // this is where X & Y coords will come in from server
         }
 
         // Method to invoke connection from client application to server
