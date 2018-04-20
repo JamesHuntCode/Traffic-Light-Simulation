@@ -422,7 +422,8 @@ namespace TrafficLightClient
             string color = "";
             RadioButton selected = new RadioButton();
 
-            RadioButton[] radioButtons = { this.radRed, this.radGreen, this.radBlue, this.radYellow, this.radBlack, this.radGray, this.radCyan, this.radOrange, this.radPink, this.radPurple };
+            RadioButton[] radioButtons = { this.radRed, this.radGreen, this.radBlue, this.radYellow, this.radBlack,
+                this.radGray, this.radCyan, this.radOrange, this.radPink, this.radPurple };
 
             for (int i = 0; i < radioButtons.Length; i++)
             {

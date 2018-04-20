@@ -43,10 +43,12 @@ namespace TrafficLightClient
 
         }
 
-        // Method to stop running thread and terminate live connection
+        // Method to stop running thread and terminate active connection
         public void StopThread()
         {
-
+            this.running = false;
+            this.client.GetStream().Close();
+            this.client.Close();
         }
     }
 }
