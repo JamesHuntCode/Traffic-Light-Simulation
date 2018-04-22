@@ -43,7 +43,6 @@ namespace TrafficLightClient
         {
             // output user's IP information
             IPHostEntry currentPCInfo = Dns.GetHostEntry(Dns.GetHostName());
-            this.createMessageBreak();
             foreach (IPAddress address in currentPCInfo.AddressList)
             {
                 this.lstServerEcho.Items.Add(address.ToString());
@@ -205,7 +204,7 @@ namespace TrafficLightClient
         {
             string color = this.getCarColor();
             string hex = this.getHex(color);
-            this.createNewCar(hex);
+            this.createNewCar(("newCar" + "/" + hex), "IPADDRESS");
         }
 
         // Method to connect client application to server
@@ -240,9 +239,6 @@ namespace TrafficLightClient
                     this.inStream = new BinaryReader(this.connectionStream);
                     this.outStream = new BinaryWriter(this.connectionStream);
 
-                    this.lstServerEcho.Items.Add("Socket connected to: " + this.server);
-                    this.createMessageBreak();
-
                     // if needed... update form to connected here...
 
                     // new thread created to manage connection
@@ -265,9 +261,55 @@ namespace TrafficLightClient
         }
 
         // Method to allow clients to add new cars to server
-        private void createNewCar(string color)
+        private void createNewCar(string data, string IP)
         {
-            // come back here...
+            // check connection before going ahead
+            bool stillConnected = this.connectToServer();
+
+            if (stillConnected)
+            {
+                this.connected = true;
+
+                try
+                {
+                    byte[] dataPacket = new byte[this.bufferSize];
+                    string[] ipStrings = IP.Split('.');
+
+                    dataPacket[0] = Byte.Parse(ipStrings[0]);
+                    dataPacket[1] = Byte.Parse(ipStrings[1]);
+                    dataPacket[2] = Byte.Parse(ipStrings[2]);
+                    dataPacket[3] = Byte.Parse(ipStrings[3]);
+
+                    int bufferIndex = 4;
+
+                    int len = data.Length;
+                    char[] chars = data.ToCharArray();
+
+                    // parse chars into bytes and insert into data packet
+                    for (int i = 0; i < len; i++)
+                    {
+                        byte currentByte = (byte)chars[i];
+                        dataPacket[bufferIndex] = currentByte;
+                        bufferIndex++;
+                    }
+
+                    dataPacket[bufferIndex] = 0;
+
+                    this.outStream.Write(dataPacket, 0, this.bufferSize);
+
+                    this.pushNotification("new-car");
+                }
+                catch (Exception)
+                {
+                    this.pushNotification("fail");
+                }  
+            }
+            else
+            {
+                this.connected = false;
+                this.updateForm("disconnected");
+                this.pushNotification("disconnected");
+            }
         }
 
         // Method to see if user wishes to connect automatically (upon app open)
@@ -352,6 +394,21 @@ namespace TrafficLightClient
                 case "failure":
 
                     this.lstServerEcho.Items.Add("Server connection failed @ " + theTime);
+
+                    break;
+                case "new-car":
+
+                    this.lstServerEcho.Items.Add("New car added @ " + theTime);
+
+                    break;
+                case "fail":
+
+                    this.lstServerEcho.Items.Add("Sever failed to receive car @ " + theTime);
+
+                    break;
+                case "denied":
+
+                    this.lstServerEcho.Items.Add("Access denied to send new car @ " + theTime);
 
                     break;
             }

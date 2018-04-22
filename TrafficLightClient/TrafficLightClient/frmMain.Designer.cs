@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.pnlControlsBG = new System.Windows.Forms.Panel();
             this.pnlControls = new System.Windows.Forms.Panel();
-            this.pbarConnecting = new System.Windows.Forms.ProgressBar();
             this.grpFunctionality = new System.Windows.Forms.GroupBox();
             this.grpCarColors = new System.Windows.Forms.GroupBox();
             this.radPurple = new System.Windows.Forms.RadioButton();
@@ -80,7 +79,6 @@
             // 
             // pnlControls
             // 
-            this.pnlControls.Controls.Add(this.pbarConnecting);
             this.pnlControls.Controls.Add(this.grpFunctionality);
             this.pnlControls.Controls.Add(this.btnConnect);
             this.pnlControls.Controls.Add(this.lblServerState);
@@ -94,20 +92,13 @@
             this.pnlControls.Size = new System.Drawing.Size(279, 694);
             this.pnlControls.TabIndex = 1;
             // 
-            // pbarConnecting
-            // 
-            this.pbarConnecting.Location = new System.Drawing.Point(3, 143);
-            this.pbarConnecting.Name = "pbarConnecting";
-            this.pbarConnecting.Size = new System.Drawing.Size(273, 10);
-            this.pbarConnecting.TabIndex = 14;
-            // 
             // grpFunctionality
             // 
             this.grpFunctionality.Controls.Add(this.grpCarColors);
             this.grpFunctionality.Controls.Add(this.lblColorPref);
             this.grpFunctionality.Controls.Add(this.btnAddCar);
             this.grpFunctionality.Controls.Add(this.lblAddCar);
-            this.grpFunctionality.Location = new System.Drawing.Point(4, 159);
+            this.grpFunctionality.Location = new System.Drawing.Point(4, 142);
             this.grpFunctionality.Name = "grpFunctionality";
             this.grpFunctionality.Size = new System.Drawing.Size(272, 332);
             this.grpFunctionality.TabIndex = 11;
@@ -317,7 +308,7 @@
             // 
             this.lblServerEcho.AutoSize = true;
             this.lblServerEcho.Font = new System.Drawing.Font("DINPro-Regular", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblServerEcho.Location = new System.Drawing.Point(3, 494);
+            this.lblServerEcho.Location = new System.Drawing.Point(3, 477);
             this.lblServerEcho.Name = "lblServerEcho";
             this.lblServerEcho.Size = new System.Drawing.Size(219, 27);
             this.lblServerEcho.TabIndex = 8;
@@ -328,9 +319,9 @@
             this.lstServerEcho.Font = new System.Drawing.Font("DINPro-Regular", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstServerEcho.FormattingEnabled = true;
             this.lstServerEcho.ItemHeight = 17;
-            this.lstServerEcho.Location = new System.Drawing.Point(3, 524);
+            this.lstServerEcho.Location = new System.Drawing.Point(3, 507);
             this.lstServerEcho.Name = "lstServerEcho";
-            this.lstServerEcho.Size = new System.Drawing.Size(273, 106);
+            this.lstServerEcho.Size = new System.Drawing.Size(273, 140);
             this.lstServerEcho.TabIndex = 7;
             // 
             // pictureBox1
@@ -472,7 +463,6 @@
         private System.Windows.Forms.GroupBox grpFunctionality;
         private System.Windows.Forms.Button btnAddCar;
         private System.Windows.Forms.CheckBox radAutoConnect;
-        private System.Windows.Forms.ProgressBar pbarConnecting;
         private System.Windows.Forms.Label lblColorPref;
         private System.Windows.Forms.Label lblAddCar;
         private System.Windows.Forms.GroupBox grpCarColors;
