@@ -30,7 +30,8 @@ namespace TrafficLightClient
         private int portNumber = 8080;
         private int bufferSize = 200;
         private TcpClient client = null;
-        private string server = "eeyore.fost.plymouth.ac.uk";
+        //private string server = "eeyore.fost.plymouth.ac.uk";
+        private string server = "localhost";
         private NetworkStream connectionStream = null;
         private BinaryReader inStream = null;
         private BinaryWriter outStream = null;
@@ -210,7 +211,7 @@ namespace TrafficLightClient
         // Method to connect client application to server
         private bool connectToServer()
         {
-            bool connected = false;
+            bool fullConnection = false;
             bool tempConnection = false;
 
             try
@@ -220,7 +221,7 @@ namespace TrafficLightClient
             }
             catch (Exception)
             {
-                this.connected = false;
+                fullConnection = false;
                 tempConnection = false;
             }
 
@@ -228,11 +229,11 @@ namespace TrafficLightClient
             {
                 if (this.client == null)
                 {
-                    this.connected = false;
+                    fullConnection = false;
                 }
                 else
                 {
-                    this.connected = true;
+                    fullConnection = true;
 
                     // create streams
                     this.connectionStream = this.client.GetStream();
@@ -244,13 +245,13 @@ namespace TrafficLightClient
 
                     // if needed... update form to connected here...
 
-                    // new thread created to manage incoming data connection
+                    // new thread created to manage connection
                     this.threadConnection = new ConnectionThread(this.uiContext, this.client, this);
                     Thread threadRunner = new Thread(new ThreadStart(this.threadConnection.Run));
                 }
             }
 
-            return connected;
+            return fullConnection;
         }
 
         // Method to break connection from client application to server
