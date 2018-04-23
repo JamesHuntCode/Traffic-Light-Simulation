@@ -204,7 +204,7 @@ namespace TrafficLightClient
         {
             string color = this.getCarColor();
             string hex = this.getHex(color);
-            this.createNewCar(("newCar" + "/" + hex), "IPADDRESS");
+            this.createNewCar(("newCar" + ":" + hex.ToString() + ";"));
         }
 
         // Method to connect client application to server
@@ -261,55 +261,42 @@ namespace TrafficLightClient
         }
 
         // Method to allow clients to add new cars to server
-        private void createNewCar(string data, string IP)
+        private void createNewCar(string data)
         {
-            // check connection before going ahead
-            bool stillConnected = this.connectToServer();
-
-            if (stillConnected)
+            try
             {
-                this.connected = true;
+                byte[] dataPacket = new byte[this.bufferSize];
+                
+                int bufferIndex = 0;
 
-                try
+                int len = data.Length;
+                char[] chars = data.ToCharArray();
+
+                // parse chars into bytes and insert into data packet
+                for (int i = 0; i < len; i++)
                 {
-                    byte[] dataPacket = new byte[this.bufferSize];
-                    string[] ipStrings = IP.Split('.');
-
-                    dataPacket[0] = Byte.Parse(ipStrings[0]);
-                    dataPacket[1] = Byte.Parse(ipStrings[1]);
-                    dataPacket[2] = Byte.Parse(ipStrings[2]);
-                    dataPacket[3] = Byte.Parse(ipStrings[3]);
-
-                    int bufferIndex = 4;
-
-                    int len = data.Length;
-                    char[] chars = data.ToCharArray();
-
-                    // parse chars into bytes and insert into data packet
-                    for (int i = 0; i < len; i++)
-                    {
-                        byte currentByte = (byte)chars[i];
-                        dataPacket[bufferIndex] = currentByte;
-                        bufferIndex++;
-                    }
-
-                    dataPacket[bufferIndex] = 0;
-
-                    this.outStream.Write(dataPacket, 0, this.bufferSize);
-
-                    this.pushNotification("new-car");
+                    byte currentByte = (byte)chars[i];
+                    dataPacket[bufferIndex] = currentByte;
+                    bufferIndex++;
                 }
-                catch (Exception)
-                {
-                    this.pushNotification("fail");
-                }  
+
+                dataPacket[bufferIndex] = 0;
+
+                this.outStream.Write(dataPacket, 0, this.bufferSize);
+
+                this.pushNotification("new-car");
             }
-            else
+            catch (Exception)
             {
                 this.connected = false;
+                this.pushNotification("fail");
                 this.updateForm("disconnected");
                 this.pushNotification("disconnected");
             }
+
+            // update server connection...
+            this.disconnectFromServer();
+            this.connectToServer();
         }
 
         // Method to see if user wishes to connect automatically (upon app open)
