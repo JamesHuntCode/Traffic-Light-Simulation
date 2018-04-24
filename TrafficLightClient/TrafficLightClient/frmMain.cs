@@ -272,7 +272,6 @@ namespace TrafficLightClient
                 int len = data.Length;
                 char[] chars = data.ToCharArray();
 
-                // parse chars into bytes and insert into data packet
                 for (int i = 0; i < len; i++)
                 {
                     byte currentByte = (byte)chars[i];
@@ -417,52 +416,52 @@ namespace TrafficLightClient
             {
                 case "red":
 
-                    colorCode = Convert.ToString(ColorTranslator.FromHtml("#FF0000"));
+                    colorCode = "#FF0000";
 
                     break;
                 case "green":
 
-                    colorCode = Convert.ToString(ColorTranslator.FromHtml("#008000"));
+                    colorCode = "#008000"; 
 
                     break;
                 case "blue":
 
-                    colorCode = Convert.ToString(ColorTranslator.FromHtml("#0000FF"));
+                    colorCode = "#0000FF";
 
                     break;
                 case "yellow":
 
-                    colorCode = Convert.ToString(ColorTranslator.FromHtml("#F7DC6F"));
+                    colorCode = "#F7DC6F";
 
                     break;
                 case "black":
 
-                    colorCode = Convert.ToString(ColorTranslator.FromHtml("#333"));
+                    colorCode = "#333";
 
                     break;
                 case "gray":
 
-                    colorCode = Convert.ToString(ColorTranslator.FromHtml("#616A6B"));
+                    colorCode = "#616A6B";
 
                     break;
                 case "cyan":
 
-                    colorCode = Convert.ToString(ColorTranslator.FromHtml("#1ABC9C"));
+                    colorCode = "#1ABC9C";
 
                     break;
                 case "orange":
 
-                    colorCode = Convert.ToString(ColorTranslator.FromHtml("#D35400"));
+                    colorCode = "#D35400";
 
                     break;
                 case "pink":
 
-                    colorCode = Convert.ToString(ColorTranslator.FromHtml("#AF7AC5"));
+                    colorCode = "#AF7AC5";
 
                     break;
                 case "purple":
 
-                    colorCode = Convert.ToString(ColorTranslator.FromHtml("#7D3C98"));
+                    colorCode = "#7D3C98";
 
                     break;
             }
