@@ -77,6 +77,7 @@ namespace TrafficLightClient
                 {
                     this.updateForm("connected");
                     this.connected = true;
+                    this.sendDataToServer("0");
                 }
                 else
                 {
@@ -154,7 +155,6 @@ namespace TrafficLightClient
             String message = (String)thing;
             this.lstServerEcho.Items.Add(message);
             this.createMessageBreak();
-            // this is where X & Y coords will come in from server
         }
 
         // Method to invoke connection from client application to server
@@ -173,6 +173,7 @@ namespace TrafficLightClient
                 {
                     this.updateForm("connected");
                     this.connected = true;
+                    this.sendDataToServer("0");
                 }
                 else
                 {
@@ -204,7 +205,7 @@ namespace TrafficLightClient
         {
             string color = this.getCarColor();
             string hex = this.getHex(color);
-            this.createNewCar(("newCar" + ":" + hex.ToString() + ";"));
+            this.createNewCar("newCar" + ":" + hex + ";"); // remove the ';' later - it is used to split the data on the server
         }
 
         // Method to connect client application to server
@@ -215,7 +216,7 @@ namespace TrafficLightClient
 
             try
             {
-                this.client = new TcpClient(this.server, this.portNumber); // will freeze program if ran anywhere but uni... (comment out to debug)
+                this.client = new TcpClient(this.server, this.portNumber);
                 tempConnection = true;
             }
             catch (Exception)
@@ -239,8 +240,6 @@ namespace TrafficLightClient
                     this.inStream = new BinaryReader(this.connectionStream);
                     this.outStream = new BinaryWriter(this.connectionStream);
 
-                    // if needed... update form to connected here...
-
                     // new thread created to manage connection
                     this.threadConnection = new ConnectionThread(this.uiContext, this.client, this);
                     Thread threadRunner = new Thread(new ThreadStart(this.threadConnection.Run));
@@ -255,7 +254,6 @@ namespace TrafficLightClient
         {
             if (this.threadConnection != null)
             {
-                // kill current connection
                 this.threadConnection.StopThread();
             }
         }
@@ -263,14 +261,20 @@ namespace TrafficLightClient
         // Method to allow clients to add new cars to server
         private void createNewCar(string data)
         {
+            this.sendDataToServer(data);
+        }
+        
+        // Method used to deliver data from the client to the server
+        private void sendDataToServer(string dataToSend)
+        {
             try
             {
                 byte[] dataPacket = new byte[this.bufferSize];
-                
+
                 int bufferIndex = 0;
 
-                int len = data.Length;
-                char[] chars = data.ToCharArray();
+                int len = dataToSend.Length;
+                char[] chars = dataToSend.ToCharArray();
 
                 for (int i = 0; i < len; i++)
                 {
@@ -293,9 +297,21 @@ namespace TrafficLightClient
                 this.pushNotification("disconnected");
             }
 
-            // update server connection...
-            this.disconnectFromServer();
-            this.connectToServer();
+            this.reconnectToServer();
+        }
+
+        // Method used to re-establish connection to server after sending data
+        private void reconnectToServer()
+        {
+            try
+            {
+                this.disconnectFromServer();
+                this.connectToServer();
+            } 
+            catch (Exception)
+            {
+                MessageBox.Show("Oops! Error maintaining connection to server.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         // Method to see if user wishes to connect automatically (upon app open)
