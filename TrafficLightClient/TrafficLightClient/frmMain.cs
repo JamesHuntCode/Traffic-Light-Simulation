@@ -27,7 +27,7 @@ namespace TrafficLightClient
         SynchronizationContext uiContext = null;
 
         /* ------------- Networking attributes -------------- */
-        private int portNumber = 8080;
+        private int portNumber = 5000;
         private int bufferSize = 200;
         private TcpClient client = null;
         //private string server = "eeyore.fost.plymouth.ac.uk";
@@ -420,7 +420,15 @@ namespace TrafficLightClient
         // Method called when break is needed between server echo messages
         private void createMessageBreak()
         {
-            this.lstServerEcho.Items.Add("-------------------------------------------");
+            List<char> messageBreakChars = new List<char>();
+            int amountOfChars = 100;
+
+            for (int i = 0; i < amountOfChars; i++)
+            {
+                messageBreakChars.Add('-');
+            }
+
+            this.lstServerEcho.Items.Add(String.Join("", messageBreakChars));
         }
 
         // Method used to get hex value of predefined color
