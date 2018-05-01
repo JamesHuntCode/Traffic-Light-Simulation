@@ -29,7 +29,7 @@ namespace TrafficLightClient
 
         /* ------------- Networking attributes -------------- */
         private int portNumber = 5000;
-        private int bufferSize = 200;
+        //private int bufferSize = 200;
         private TcpClient client = null;
         //private string server = "eeyore.fost.plymouth.ac.uk";
         //private string server = "localhost";
