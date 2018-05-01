@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using System.IO;
+using traffic_networking;
 
 namespace TrafficLightClient
 {
@@ -19,7 +20,8 @@ namespace TrafficLightClient
         BinaryReader inStream = null;
         BinaryWriter outStream = null;
         TcpClient client = null;
-        int bufferSize = 200;
+        int readSize = 0;
+        byte[] buffer = null;
         byte[] address = new byte[4];
         bool running = true;
         SynchronizationContext uiContext = null;
@@ -42,45 +44,42 @@ namespace TrafficLightClient
         {
             try
             {
-                while (this.running)
-                {
-                    // wait until something is readible (block until so)
-                    byte[] dataPacket = new Byte[this.bufferSize];
-                    inStream.Read(dataPacket, 0, this.bufferSize);
+                this.buffer = new byte[4];
+                this.client.GetStream().BeginRead(this.buffer, 0, this.buffer.Length, readLength, null);
 
-                    // get sender IP (first 4 bytes of packet)
-                    byte ip1 = dataPacket[0];
-                    byte ip2 = dataPacket[1];
-                    byte ip3 = dataPacket[2];
-                    byte ip4 = dataPacket[3];
-                    string senderIP = ip1.ToString() + "." + ip2.ToString() + "." + ip3.ToString() + "." + ip4.ToString();
-                    char[] chars = new char[this.bufferSize];
-
-                    // assemble char array (iterate through buffer)
-                    int charCount = 0;
-                    int bufferIndex = 4;
-
-                    for (int i = 0; i < (this.bufferSize - 4); i++)
-                    {
-                        chars[i] = (char)dataPacket[bufferIndex++];
-                        charCount++;
-
-                        if (chars[i] == 0)
-                        {
-                            break;
-                        }
-                    }
-
-                    // send message from server back to main form
-                    String messageFromServer = new String(chars, 0, charCount);
-                    String message = senderIP + " sent: " + messageFromServer;
-                    this.uiContext.Post(this.owner.messageReceived, message);
-                }
+                //this.uiContext.Post(this.owner.messageReceived, message);
             }
             catch (Exception)
             {
                 this.running = false;
             }
+        }
+
+        private void readLength(IAsyncResult ar)
+        {
+            int read = this.client.GetStream().EndRead(ar);
+            if (read < this.buffer.Length)
+                throw new Exception("err");
+
+            int length = 0;
+            using (MemoryStream ms = new MemoryStream())
+            using (BinaryReader br = new BinaryReader(ms))
+                length = br.ReadInt32();
+
+            this.buffer = new byte[length];
+            this.client.GetStream().BeginRead(this.buffer, 0, this.buffer.Length, readPacket, null);
+        }
+
+        private void readPacket(IAsyncResult ar)
+        {
+            int read = this.client.GetStream().EndRead(ar);
+            if (read < this.buffer.Length)
+                throw new Exception("err");
+
+            Packet packet = new Packet(this.buffer);
+            MessageBox.Show(packet.ID.ToString());
+            //HANDLE PACKET
+            this.Run();
         }
 
         // Method to stop running thread and terminate active connection

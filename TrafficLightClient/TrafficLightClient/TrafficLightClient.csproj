@@ -47,9 +47,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\traffic-networking.dll</HintPath>
     </Reference>
+    <Reference Include="TrafficLightPanel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\TrafficLightPanel.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Car.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>

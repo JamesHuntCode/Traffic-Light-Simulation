@@ -44,6 +44,8 @@ namespace TrafficLightClient
         // Method to style form elements & set form properties
         private void prepareForm()
         {
+            this.trafficPanel1.Init(true, 500, 500);
+
             // output user's IP information
             IPHostEntry currentPCInfo = Dns.GetHostEntry(Dns.GetHostName());
             foreach (IPAddress address in currentPCInfo.AddressList)
@@ -112,7 +114,6 @@ namespace TrafficLightClient
             this.pnlControlsBG.BackColor = ColorTranslator.FromHtml("#E0E0E0");
             this.pnlControls.BackColor = ColorTranslator.FromHtml("#ffffff");
             this.pnlSimulationBG.BackColor = ColorTranslator.FromHtml("#E0E0E0");
-            this.pnlSimulation.BackColor = ColorTranslator.FromHtml("#ffffff");
 
             // buttons
             Button[] buttons = { this.btnConnect, this.btnAddCar };
@@ -275,7 +276,7 @@ namespace TrafficLightClient
         {
             try
             {
-                byte[] data = packet.FormatBytes(packet);
+                byte[] data = packet.FormatBytes();
                 this.client.GetStream().Write(data, 0, data.Length);
 
                 this.pushNotification("new-car");
