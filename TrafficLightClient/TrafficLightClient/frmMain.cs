@@ -11,6 +11,7 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using traffic_networking;
 
 namespace TrafficLightClient
 {
@@ -31,11 +32,13 @@ namespace TrafficLightClient
         private int bufferSize = 200;
         private TcpClient client = null;
         //private string server = "eeyore.fost.plymouth.ac.uk";
-        private string server = "localhost";
+        //private string server = "localhost";
+        private string server = "10.188.98.116";
         private NetworkStream connectionStream = null;
         private BinaryReader inStream = null;
         private BinaryWriter outStream = null;
         private ConnectionThread threadConnection = null;
+        private object sendLock = new object();
         /* ---------------------------------------------------*/
 
         // Method to style form elements & set form properties
@@ -77,7 +80,6 @@ namespace TrafficLightClient
                 {
                     this.updateForm("connected");
                     this.connected = true;
-                    this.sendDataToServer("0");
                 }
                 else
                 {
@@ -136,9 +138,10 @@ namespace TrafficLightClient
         // Method invoked when application is terminated
         private void closeForm()
         {
+            this.disconnectFromServer();
+
             if (this.threadConnection != null)
             {
-                // kill current connection
                 this.threadConnection.StopThread();
             }
         }
@@ -173,7 +176,7 @@ namespace TrafficLightClient
                 {
                     this.updateForm("connected");
                     this.connected = true;
-                    this.sendDataToServer("0");
+                    this.client.GetStream().WriteByte(0);
                 }
                 else
                 {
@@ -205,7 +208,7 @@ namespace TrafficLightClient
         {
             string color = this.getCarColor();
             string hex = this.getHex(color);
-            this.createNewCar("newCar" + ":" + hex + ";"); // remove the ';' later - it is used to split the data on the server
+            this.createNewCar(hex);
         }
 
         // Method to connect client application to server
@@ -217,6 +220,7 @@ namespace TrafficLightClient
             try
             {
                 this.client = new TcpClient(this.server, this.portNumber);
+                this.client.GetStream().WriteByte(0);
                 tempConnection = true;
             }
             catch (Exception)
@@ -261,31 +265,18 @@ namespace TrafficLightClient
         // Method to allow clients to add new cars to server
         private void createNewCar(string data)
         {
-            this.sendDataToServer(data);
+            Packet packet = new Packet(1);
+            packet.WriteString(data);
+            sendDataToServer(packet);
         }
         
         // Method used to deliver data from the client to the server
-        private void sendDataToServer(string dataToSend)
+        private void sendDataToServer(Packet packet)
         {
             try
             {
-                byte[] dataPacket = new byte[this.bufferSize];
-
-                int bufferIndex = 0;
-
-                int len = dataToSend.Length;
-                char[] chars = dataToSend.ToCharArray();
-
-                for (int i = 0; i < len; i++)
-                {
-                    byte currentByte = (byte)chars[i];
-                    dataPacket[bufferIndex] = currentByte;
-                    bufferIndex++;
-                }
-
-                dataPacket[bufferIndex] = 0;
-
-                this.outStream.Write(dataPacket, 0, this.bufferSize);
+                byte[] data = packet.FormatBytes(packet);
+                this.client.GetStream().Write(data, 0, data.Length);
 
                 this.pushNotification("new-car");
             }
@@ -295,22 +286,6 @@ namespace TrafficLightClient
                 this.pushNotification("fail");
                 this.updateForm("disconnected");
                 this.pushNotification("disconnected");
-            }
-
-            this.reconnectToServer();
-        }
-
-        // Method used to re-establish connection to server after sending data
-        private void reconnectToServer()
-        {
-            try
-            {
-                this.disconnectFromServer();
-                this.connectToServer();
-            } 
-            catch (Exception)
-            {
-                MessageBox.Show("Oops! Error maintaining connection to server.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -415,6 +390,10 @@ namespace TrafficLightClient
                     break;
             }
             this.createMessageBreak();
+
+            // Always show most recent logs
+            this.lstServerEcho.SelectedIndex = this.lstServerEcho.Items.Count - 1;
+            this.lstServerEcho.SelectedIndex = -1;
         }
 
         // Method called when break is needed between server echo messages
