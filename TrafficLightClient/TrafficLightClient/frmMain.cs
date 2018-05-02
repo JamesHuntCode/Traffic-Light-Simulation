@@ -13,6 +13,7 @@ using System.Net.Sockets;
 using System.Threading;
 using traffic_networking;
 using System.Timers;
+using TrafficLightPanel;
 
 namespace TrafficLightClient
 {
@@ -31,21 +32,24 @@ namespace TrafficLightClient
         /* ------------- Networking attributes -------------- */
         private int portNumber = 5000;
         //private int bufferSize = 200;
-        private TcpClient client = null;
+        //private TcpClient client = null;
         //private string server = "eeyore.fost.plymouth.ac.uk";
         //private string server = "localhost";
-        private string server = "10.188.98.116";
-        private NetworkStream connectionStream = null;
-        private BinaryReader inStream = null;
-        private BinaryWriter outStream = null;
-        private ConnectionThread threadConnection = null;
+        private string server = "10.188.98.47";
+        //private NetworkStream connectionStream = null;
+        //private BinaryReader inStream = null;
+        //private BinaryWriter outStream = null;
+        //private ConnectionThread threadConnection = null;
         private object sendLock = new object();
         /* ---------------------------------------------------*/
 
         // Method to style form elements & set form properties
         private void prepareForm()
         {
-            this.trafficPanel1.Init(true, 500, 500);
+            // load traffic panel 
+            this.trafficPanel.Init(true, 500, 500);
+            Tuple<int, int, List<Tile>> mapParams = MapManager.OpenMap(Environment.CurrentDirectory + @"\crossroad.timap");
+            this.trafficPanel.UpdateTiles(mapParams.Item1, mapParams.Item2, mapParams.Item3);
 
             // output user's IP information
             IPHostEntry currentPCInfo = Dns.GetHostEntry(Dns.GetHostName());
@@ -109,6 +113,7 @@ namespace TrafficLightClient
             this.lblCopyright.Text = "© " + currentYear + " James Hunt and Kyle Rusby Some Rights Reserved";
 
             // style form colors
+            Font programFont = new Font("Arial", 14);
 
             // panels
             this.BackColor = ColorTranslator.FromHtml("#ffffff");
@@ -125,10 +130,16 @@ namespace TrafficLightClient
                 buttons[i].FlatAppearance.BorderColor = ColorTranslator.FromHtml("#E0E0E0");
                 buttons[i].FlatAppearance.BorderSize = 2;
                 buttons[i].BackColor = ColorTranslator.FromHtml("#ffffff");
+                //buttons[i].Font = programFont;
             }
 
             // radio buttons
             this.radRed.Checked = true;
+
+            foreach (Control control in Controls)
+            {
+                //control.Font = programFont;
+            }
         }
 
         // Invoke method to safely exit application
@@ -141,11 +152,6 @@ namespace TrafficLightClient
         private void closeForm()
         {
             this.disconnectFromServer();
-
-            if (this.threadConnection != null)
-            {
-                this.threadConnection.StopThread();
-            }
         }
 
         // Method to invoke update regarding autoconnect preferences
@@ -178,7 +184,6 @@ namespace TrafficLightClient
                 {
                     this.updateForm("connected");
                     this.connected = true;
-                    this.client.GetStream().WriteByte(0);
                 }
                 else
                 {
@@ -214,59 +219,75 @@ namespace TrafficLightClient
             this.createNewCar(hex);
 
             // code to prevent car spamming
-            this.btnAddCar.Enabled = false;
+            //this.btnAddCar.Enabled = false;
             // TIMER GOES HERE...
+        }
+
+        // Method used to handle incoming packets
+        private Packet packetHandler(Packet packet)
+        {
+            switch (packet.ID)
+            {
+                case 1:
+
+                    this.readCar(packet);
+
+                    break;
+                case 2:
+
+                    this.readLights(packet);
+                       
+                    break;
+            }
+
+            return null;
+        }
+
+        // Method to handle light changes
+        private void readLights(Packet packet)
+        {
+            int ID = packet.ReadInt();
+            string color = packet.ReadString();
+
+            TrafficLight[] lights = this.trafficPanel.GetAllTiles().Where(tile => tile.GetType() == typeof(TrafficLight)).Cast<TrafficLight>().ToArray();
+            TrafficLight light = lights.Where(l => l.ID == ID).ToArray()[0];
+            light.ChangeColour(ColorTranslator.FromHtml(color), this.trafficPanel);
+        }
+
+        // Method to handle incoming car data 
+        private void readCar(Packet packet)
+        {
+            int count = packet.ReadInt();
+            List <Vehicle> vehicles = new List<Vehicle>();
+            
+            for (int i = 0; i < count; i++)
+            {
+                Rectangle rect = new Rectangle(packet.ReadInt(), packet.ReadInt(), 10, 10);
+                string hex = packet.ReadString();
+                vehicles.Add(new Vehicle(rect, hex));
+            }
+
+            this.trafficPanel.AddVehicles(vehicles);
+        }
+
+        // Method to handle exceptions in client 
+        private void exceptionHandler(Exception exception)
+        {
+            MessageBox.Show(exception.Message);
         }
 
         // Method to connect client application to server
         private bool connectToServer()
         {
-            bool fullConnection = false;
-            bool tempConnection = false;
+            Client.Connect(false, this.server, this.portNumber, packetHandler, exceptionHandler);
 
-            try
-            {
-                this.client = new TcpClient(this.server, this.portNumber);
-                this.client.GetStream().WriteByte(0);
-                tempConnection = true;
-            }
-            catch (Exception)
-            {
-                fullConnection = false;
-                tempConnection = false;
-            }
-
-            if (tempConnection)
-            {
-                if (this.client == null)
-                {
-                    fullConnection = false;
-                }
-                else
-                {
-                    fullConnection = true;
-
-                    // create streams
-                    this.connectionStream = this.client.GetStream();
-                    this.inStream = new BinaryReader(this.connectionStream);
-                    this.outStream = new BinaryWriter(this.connectionStream);
-
-                    // new thread created to manage connection
-                    this.threadConnection = new ConnectionThread(this.uiContext, this.client, this);
-                    Thread threadRunner = new Thread(new ThreadStart(this.threadConnection.Run));
-                }
-            }
-
-            return fullConnection;
+            return Client.Ready;
         }
 
         // Method to break connection from client application to server
         private void disconnectFromServer()
         {
-            if (this.threadConnection != null)
-            {
-                this.threadConnection.StopThread();
-            }
+            Client.Kill();
         }
 
         // Method to allow clients to add new cars to server
@@ -282,8 +303,7 @@ namespace TrafficLightClient
         {
             try
             {
-                byte[] data = packet.FormatBytes();
-                this.client.GetStream().Write(data, 0, data.Length);
+                Client.SendPacket(packet);
 
                 this.pushNotification("new-car");
             }
