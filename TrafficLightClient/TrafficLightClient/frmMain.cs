@@ -12,6 +12,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using traffic_networking;
+using System.Timers;
 
 namespace TrafficLightClient
 {
@@ -207,9 +208,15 @@ namespace TrafficLightClient
         // Method to invoke the addition of a new car to the server
         private void btnAddCar_Click(object sender, EventArgs e)
         {
+            // add new car
             string color = this.getCarColor();
             string hex = this.getHex(color);
             this.createNewCar(hex);
+
+            // code to prevent car spamming
+            this.btnAddCar.Enabled = false;
+            System.Timers.Timer noSpam = new System.Timers.Timer();
+            noSpam.Interval = 1000;
         }
 
         // Method to connect client application to server
@@ -393,15 +400,14 @@ namespace TrafficLightClient
             this.createMessageBreak();
 
             // Always show most recent logs
-            this.lstServerEcho.SelectedIndex = this.lstServerEcho.Items.Count - 1;
-            this.lstServerEcho.SelectedIndex = -1;
+            this.lstServerEcho.TopIndex = this.lstServerEcho.Items.Count - 1;
         }
 
         // Method called when break is needed between server echo messages
         private void createMessageBreak()
         {
             List<char> messageBreakChars = new List<char>();
-            int amountOfChars = 100;
+            int amountOfChars = 1000;
 
             for (int i = 0; i < amountOfChars; i++)
             {

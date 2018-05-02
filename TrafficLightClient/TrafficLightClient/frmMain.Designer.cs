@@ -49,7 +49,6 @@
             this.btnConnect = new System.Windows.Forms.Button();
             this.lblServerState = new System.Windows.Forms.Label();
             this.lblServerStatus = new System.Windows.Forms.Label();
-            this.lblServerEcho = new System.Windows.Forms.Label();
             this.lstServerEcho = new System.Windows.Forms.ListBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -72,39 +71,38 @@
             // pnlControlsBG
             // 
             this.pnlControlsBG.Controls.Add(this.pnlControls);
-            this.pnlControlsBG.Location = new System.Drawing.Point(1132, 15);
+            this.pnlControlsBG.Location = new System.Drawing.Point(533, 13);
             this.pnlControlsBG.Margin = new System.Windows.Forms.Padding(4);
             this.pnlControlsBG.Name = "pnlControlsBG";
-            this.pnlControlsBG.Size = new System.Drawing.Size(380, 862);
+            this.pnlControlsBG.Size = new System.Drawing.Size(380, 618);
             this.pnlControlsBG.TabIndex = 0;
             // 
             // pnlControls
             // 
-            this.pnlControls.Controls.Add(this.grpFunctionality);
+            this.pnlControls.Controls.Add(this.radAutoConnect);
             this.pnlControls.Controls.Add(this.btnConnect);
             this.pnlControls.Controls.Add(this.lblServerState);
+            this.pnlControls.Controls.Add(this.grpFunctionality);
             this.pnlControls.Controls.Add(this.lblServerStatus);
-            this.pnlControls.Controls.Add(this.lblServerEcho);
-            this.pnlControls.Controls.Add(this.lstServerEcho);
             this.pnlControls.Controls.Add(this.pictureBox1);
             this.pnlControls.Controls.Add(this.label1);
             this.pnlControls.Location = new System.Drawing.Point(4, 4);
             this.pnlControls.Margin = new System.Windows.Forms.Padding(4);
             this.pnlControls.Name = "pnlControls";
-            this.pnlControls.Size = new System.Drawing.Size(372, 854);
+            this.pnlControls.Size = new System.Drawing.Size(372, 608);
             this.pnlControls.TabIndex = 1;
             // 
             // grpFunctionality
             // 
+            this.grpFunctionality.Controls.Add(this.btnAddCar);
             this.grpFunctionality.Controls.Add(this.grpCarColors);
             this.grpFunctionality.Controls.Add(this.lblColorPref);
-            this.grpFunctionality.Controls.Add(this.btnAddCar);
             this.grpFunctionality.Controls.Add(this.lblAddCar);
-            this.grpFunctionality.Location = new System.Drawing.Point(5, 175);
+            this.grpFunctionality.Location = new System.Drawing.Point(4, 174);
             this.grpFunctionality.Margin = new System.Windows.Forms.Padding(4);
             this.grpFunctionality.Name = "grpFunctionality";
             this.grpFunctionality.Padding = new System.Windows.Forms.Padding(4);
-            this.grpFunctionality.Size = new System.Drawing.Size(363, 409);
+            this.grpFunctionality.Size = new System.Drawing.Size(364, 385);
             this.grpFunctionality.TabIndex = 11;
             this.grpFunctionality.TabStop = false;
             // 
@@ -124,7 +122,7 @@
             this.grpCarColors.Margin = new System.Windows.Forms.Padding(4);
             this.grpCarColors.Name = "grpCarColors";
             this.grpCarColors.Padding = new System.Windows.Forms.Padding(4);
-            this.grpCarColors.Size = new System.Drawing.Size(347, 228);
+            this.grpCarColors.Size = new System.Drawing.Size(347, 203);
             this.grpCarColors.TabIndex = 16;
             this.grpCarColors.TabStop = false;
             // 
@@ -135,7 +133,7 @@
             this.radPurple.Location = new System.Drawing.Point(232, 172);
             this.radPurple.Margin = new System.Windows.Forms.Padding(4);
             this.radPurple.Name = "radPurple";
-            this.radPurple.Size = new System.Drawing.Size(89, 29);
+            this.radPurple.Size = new System.Drawing.Size(72, 24);
             this.radPurple.TabIndex = 9;
             this.radPurple.TabStop = true;
             this.radPurple.Text = "Purple";
@@ -148,7 +146,7 @@
             this.radPink.Location = new System.Drawing.Point(232, 135);
             this.radPink.Margin = new System.Windows.Forms.Padding(4);
             this.radPink.Name = "radPink";
-            this.radPink.Size = new System.Drawing.Size(71, 29);
+            this.radPink.Size = new System.Drawing.Size(57, 24);
             this.radPink.TabIndex = 8;
             this.radPink.TabStop = true;
             this.radPink.Text = "Pink";
@@ -161,7 +159,7 @@
             this.radOrange.Location = new System.Drawing.Point(233, 98);
             this.radOrange.Margin = new System.Windows.Forms.Padding(4);
             this.radOrange.Name = "radOrange";
-            this.radOrange.Size = new System.Drawing.Size(99, 29);
+            this.radOrange.Size = new System.Drawing.Size(80, 24);
             this.radOrange.TabIndex = 7;
             this.radOrange.TabStop = true;
             this.radOrange.Text = "Orange";
@@ -174,7 +172,7 @@
             this.radCyan.Location = new System.Drawing.Point(232, 62);
             this.radCyan.Margin = new System.Windows.Forms.Padding(4);
             this.radCyan.Name = "radCyan";
-            this.radCyan.Size = new System.Drawing.Size(80, 29);
+            this.radCyan.Size = new System.Drawing.Size(63, 24);
             this.radCyan.TabIndex = 6;
             this.radCyan.TabStop = true;
             this.radCyan.Text = "Cyan";
@@ -187,7 +185,7 @@
             this.radGray.Location = new System.Drawing.Point(233, 25);
             this.radGray.Margin = new System.Windows.Forms.Padding(4);
             this.radGray.Name = "radGray";
-            this.radGray.Size = new System.Drawing.Size(75, 29);
+            this.radGray.Size = new System.Drawing.Size(61, 24);
             this.radGray.TabIndex = 5;
             this.radGray.TabStop = true;
             this.radGray.Text = "Gray";
@@ -200,7 +198,7 @@
             this.radBlack.Location = new System.Drawing.Point(8, 172);
             this.radBlack.Margin = new System.Windows.Forms.Padding(4);
             this.radBlack.Name = "radBlack";
-            this.radBlack.Size = new System.Drawing.Size(81, 29);
+            this.radBlack.Size = new System.Drawing.Size(66, 24);
             this.radBlack.TabIndex = 4;
             this.radBlack.TabStop = true;
             this.radBlack.Text = "Black";
@@ -213,7 +211,7 @@
             this.radYellow.Location = new System.Drawing.Point(8, 135);
             this.radYellow.Margin = new System.Windows.Forms.Padding(4);
             this.radYellow.Name = "radYellow";
-            this.radYellow.Size = new System.Drawing.Size(90, 29);
+            this.radYellow.Size = new System.Drawing.Size(73, 24);
             this.radYellow.TabIndex = 3;
             this.radYellow.TabStop = true;
             this.radYellow.Text = "Yellow";
@@ -226,7 +224,7 @@
             this.radBlue.Location = new System.Drawing.Point(9, 98);
             this.radBlue.Margin = new System.Windows.Forms.Padding(4);
             this.radBlue.Name = "radBlue";
-            this.radBlue.Size = new System.Drawing.Size(72, 29);
+            this.radBlue.Size = new System.Drawing.Size(59, 24);
             this.radBlue.TabIndex = 2;
             this.radBlue.TabStop = true;
             this.radBlue.Text = "Blue";
@@ -239,7 +237,7 @@
             this.radGreen.Location = new System.Drawing.Point(8, 62);
             this.radGreen.Margin = new System.Windows.Forms.Padding(4);
             this.radGreen.Name = "radGreen";
-            this.radGreen.Size = new System.Drawing.Size(87, 29);
+            this.radGreen.Size = new System.Drawing.Size(72, 24);
             this.radGreen.TabIndex = 1;
             this.radGreen.TabStop = true;
             this.radGreen.Text = "Green";
@@ -252,7 +250,7 @@
             this.radRed.Location = new System.Drawing.Point(9, 25);
             this.radRed.Margin = new System.Windows.Forms.Padding(4);
             this.radRed.Name = "radRed";
-            this.radRed.Size = new System.Drawing.Size(68, 29);
+            this.radRed.Size = new System.Drawing.Size(57, 24);
             this.radRed.TabIndex = 0;
             this.radRed.TabStop = true;
             this.radRed.Text = "Red";
@@ -262,20 +260,20 @@
             // 
             this.lblColorPref.AutoSize = true;
             this.lblColorPref.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblColorPref.Location = new System.Drawing.Point(75, 69);
+            this.lblColorPref.Location = new System.Drawing.Point(98, 74);
             this.lblColorPref.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblColorPref.Name = "lblColorPref";
-            this.lblColorPref.Size = new System.Drawing.Size(187, 29);
+            this.lblColorPref.Size = new System.Drawing.Size(145, 24);
             this.lblColorPref.TabIndex = 15;
             this.lblColorPref.Text = "Pick Car Colour:";
             // 
             // btnAddCar
             // 
             this.btnAddCar.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddCar.Location = new System.Drawing.Point(8, 337);
+            this.btnAddCar.Location = new System.Drawing.Point(0, 313);
             this.btnAddCar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddCar.Name = "btnAddCar";
-            this.btnAddCar.Size = new System.Drawing.Size(347, 64);
+            this.btnAddCar.Size = new System.Drawing.Size(364, 64);
             this.btnAddCar.TabIndex = 12;
             this.btnAddCar.Text = "Add New Car";
             this.btnAddCar.UseVisualStyleBackColor = true;
@@ -285,20 +283,20 @@
             // 
             this.lblAddCar.AutoSize = true;
             this.lblAddCar.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddCar.Location = new System.Drawing.Point(60, 20);
+            this.lblAddCar.Location = new System.Drawing.Point(81, 29);
             this.lblAddCar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAddCar.Name = "lblAddCar";
-            this.lblAddCar.Size = new System.Drawing.Size(220, 39);
+            this.lblAddCar.Size = new System.Drawing.Size(175, 31);
             this.lblAddCar.TabIndex = 15;
             this.lblAddCar.Text = "Add New Car";
             // 
             // btnConnect
             // 
             this.btnConnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConnect.Location = new System.Drawing.Point(4, 103);
+            this.btnConnect.Location = new System.Drawing.Point(4, 105);
             this.btnConnect.Margin = new System.Windows.Forms.Padding(4);
             this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(364, 64);
+            this.btnConnect.Size = new System.Drawing.Size(364, 61);
             this.btnConnect.TabIndex = 6;
             this.btnConnect.Text = "Connect";
             this.btnConnect.UseVisualStyleBackColor = true;
@@ -308,10 +306,10 @@
             // 
             this.lblServerState.AutoSize = true;
             this.lblServerState.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblServerState.Location = new System.Drawing.Point(184, 814);
+            this.lblServerState.Location = new System.Drawing.Point(212, 574);
             this.lblServerState.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblServerState.Name = "lblServerState";
-            this.lblServerState.Size = new System.Drawing.Size(146, 29);
+            this.lblServerState.Size = new System.Drawing.Size(113, 24);
             this.lblServerState.TabIndex = 10;
             this.lblServerState.Text = "current-state";
             // 
@@ -319,42 +317,31 @@
             // 
             this.lblServerStatus.AutoSize = true;
             this.lblServerStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblServerStatus.Location = new System.Drawing.Point(4, 814);
+            this.lblServerStatus.Location = new System.Drawing.Point(8, 574);
             this.lblServerStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblServerStatus.Name = "lblServerStatus";
-            this.lblServerStatus.Size = new System.Drawing.Size(162, 29);
+            this.lblServerStatus.Size = new System.Drawing.Size(125, 24);
             this.lblServerStatus.TabIndex = 9;
             this.lblServerStatus.Text = "Server Status:";
             // 
-            // lblServerEcho
-            // 
-            this.lblServerEcho.AutoSize = true;
-            this.lblServerEcho.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblServerEcho.Location = new System.Drawing.Point(4, 587);
-            this.lblServerEcho.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblServerEcho.Name = "lblServerEcho";
-            this.lblServerEcho.Size = new System.Drawing.Size(291, 31);
-            this.lblServerEcho.TabIndex = 8;
-            this.lblServerEcho.Text = "Recent Server Activity:";
-            // 
             // lstServerEcho
             // 
-            this.lstServerEcho.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstServerEcho.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstServerEcho.FormattingEnabled = true;
             this.lstServerEcho.ItemHeight = 20;
-            this.lstServerEcho.Location = new System.Drawing.Point(4, 624);
+            this.lstServerEcho.Location = new System.Drawing.Point(16, 639);
             this.lstServerEcho.Margin = new System.Windows.Forms.Padding(4);
             this.lstServerEcho.Name = "lstServerEcho";
-            this.lstServerEcho.Size = new System.Drawing.Size(363, 164);
+            this.lstServerEcho.Size = new System.Drawing.Size(897, 144);
             this.lstServerEcho.TabIndex = 7;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(37, 20);
+            this.pictureBox1.Location = new System.Drawing.Point(60, 8);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(49, 43);
+            this.pictureBox1.Size = new System.Drawing.Size(44, 43);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
@@ -363,10 +350,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(95, 20);
+            this.label1.Location = new System.Drawing.Point(101, 20);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(225, 39);
+            this.label1.Size = new System.Drawing.Size(181, 31);
             this.label1.TabIndex = 6;
             this.label1.Text = "User Controls";
             // 
@@ -385,10 +372,10 @@
             // 
             this.lblMainHeading.AutoSize = true;
             this.lblMainHeading.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMainHeading.Location = new System.Drawing.Point(139, 38);
+            this.lblMainHeading.Location = new System.Drawing.Point(139, 48);
             this.lblMainHeading.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMainHeading.Name = "lblMainHeading";
-            this.lblMainHeading.Size = new System.Drawing.Size(363, 39);
+            this.lblMainHeading.Size = new System.Drawing.Size(290, 31);
             this.lblMainHeading.TabIndex = 3;
             this.lblMainHeading.Text = "Traffic Light Simulation";
             // 
@@ -396,10 +383,10 @@
             // 
             this.lblCopyright.AutoSize = true;
             this.lblCopyright.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCopyright.Location = new System.Drawing.Point(16, 880);
+            this.lblCopyright.Location = new System.Drawing.Point(13, 795);
             this.lblCopyright.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCopyright.Name = "lblCopyright";
-            this.lblCopyright.Size = new System.Drawing.Size(451, 20);
+            this.lblCopyright.Size = new System.Drawing.Size(358, 16);
             this.lblCopyright.TabIndex = 4;
             this.lblCopyright.Text = "©2018 James Hunt and Kyle Rusby Some Rights Reserved";
             // 
@@ -407,10 +394,10 @@
             // 
             this.lblVersion.AutoSize = true;
             this.lblVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVersion.Location = new System.Drawing.Point(1399, 880);
+            this.lblVersion.Location = new System.Drawing.Point(828, 795);
             this.lblVersion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(111, 20);
+            this.lblVersion.Size = new System.Drawing.Size(87, 16);
             this.lblVersion.TabIndex = 5;
             this.lblVersion.Text = "Version: 1.1.2";
             // 
@@ -418,10 +405,10 @@
             // 
             this.radAutoConnect.AutoSize = true;
             this.radAutoConnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radAutoConnect.Location = new System.Drawing.Point(877, 85);
+            this.radAutoConnect.Location = new System.Drawing.Point(4, 74);
             this.radAutoConnect.Margin = new System.Windows.Forms.Padding(4);
             this.radAutoConnect.Name = "radAutoConnect";
-            this.radAutoConnect.Size = new System.Drawing.Size(229, 29);
+            this.radAutoConnect.Size = new System.Drawing.Size(186, 24);
             this.radAutoConnect.TabIndex = 13;
             this.radAutoConnect.Text = "Connect Automatically";
             this.radAutoConnect.UseVisualStyleBackColor = true;
@@ -433,7 +420,7 @@
             this.pnlSimulationBG.Location = new System.Drawing.Point(16, 122);
             this.pnlSimulationBG.Margin = new System.Windows.Forms.Padding(4);
             this.pnlSimulationBG.Name = "pnlSimulationBG";
-            this.pnlSimulationBG.Size = new System.Drawing.Size(1108, 754);
+            this.pnlSimulationBG.Size = new System.Drawing.Size(509, 509);
             this.pnlSimulationBG.TabIndex = 1;
             // 
             // trafficPanel1
@@ -446,11 +433,11 @@
             // frmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1528, 907);
-            this.Controls.Add(this.radAutoConnect);
+            this.ClientSize = new System.Drawing.Size(928, 820);
             this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.lblCopyright);
             this.Controls.Add(this.lblMainHeading);
+            this.Controls.Add(this.lstServerEcho);
             this.Controls.Add(this.picAppLogo);
             this.Controls.Add(this.pnlSimulationBG);
             this.Controls.Add(this.pnlControlsBG);
@@ -486,7 +473,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ListBox lstServerEcho;
-        private System.Windows.Forms.Label lblServerEcho;
         private System.Windows.Forms.Label lblServerStatus;
         private System.Windows.Forms.Label lblServerState;
         private System.Windows.Forms.Button btnConnect;
