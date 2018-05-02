@@ -130,7 +130,7 @@
             // 
             this.radPurple.AutoSize = true;
             this.radPurple.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radPurple.Location = new System.Drawing.Point(232, 172);
+            this.radPurple.Location = new System.Drawing.Point(257, 171);
             this.radPurple.Margin = new System.Windows.Forms.Padding(4);
             this.radPurple.Name = "radPurple";
             this.radPurple.Size = new System.Drawing.Size(72, 24);
@@ -143,7 +143,7 @@
             // 
             this.radPink.AutoSize = true;
             this.radPink.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radPink.Location = new System.Drawing.Point(232, 135);
+            this.radPink.Location = new System.Drawing.Point(257, 134);
             this.radPink.Margin = new System.Windows.Forms.Padding(4);
             this.radPink.Name = "radPink";
             this.radPink.Size = new System.Drawing.Size(57, 24);
@@ -156,7 +156,7 @@
             // 
             this.radOrange.AutoSize = true;
             this.radOrange.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radOrange.Location = new System.Drawing.Point(233, 98);
+            this.radOrange.Location = new System.Drawing.Point(258, 97);
             this.radOrange.Margin = new System.Windows.Forms.Padding(4);
             this.radOrange.Name = "radOrange";
             this.radOrange.Size = new System.Drawing.Size(80, 24);
@@ -169,7 +169,7 @@
             // 
             this.radCyan.AutoSize = true;
             this.radCyan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radCyan.Location = new System.Drawing.Point(232, 62);
+            this.radCyan.Location = new System.Drawing.Point(257, 61);
             this.radCyan.Margin = new System.Windows.Forms.Padding(4);
             this.radCyan.Name = "radCyan";
             this.radCyan.Size = new System.Drawing.Size(63, 24);
@@ -182,7 +182,7 @@
             // 
             this.radGray.AutoSize = true;
             this.radGray.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radGray.Location = new System.Drawing.Point(233, 25);
+            this.radGray.Location = new System.Drawing.Point(258, 24);
             this.radGray.Margin = new System.Windows.Forms.Padding(4);
             this.radGray.Name = "radGray";
             this.radGray.Size = new System.Drawing.Size(61, 24);
@@ -260,7 +260,7 @@
             // 
             this.lblColorPref.AutoSize = true;
             this.lblColorPref.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblColorPref.Location = new System.Drawing.Point(98, 74);
+            this.lblColorPref.Location = new System.Drawing.Point(99, 74);
             this.lblColorPref.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblColorPref.Name = "lblColorPref";
             this.lblColorPref.Size = new System.Drawing.Size(145, 24);
@@ -283,7 +283,7 @@
             // 
             this.lblAddCar.AutoSize = true;
             this.lblAddCar.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddCar.Location = new System.Drawing.Point(81, 29);
+            this.lblAddCar.Location = new System.Drawing.Point(87, 33);
             this.lblAddCar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAddCar.Name = "lblAddCar";
             this.lblAddCar.Size = new System.Drawing.Size(175, 31);

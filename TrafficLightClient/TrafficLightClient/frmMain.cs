@@ -215,8 +215,7 @@ namespace TrafficLightClient
 
             // code to prevent car spamming
             this.btnAddCar.Enabled = false;
-            System.Timers.Timer noSpam = new System.Timers.Timer();
-            noSpam.Interval = 1000;
+            // TIMER GOES HERE...
         }
 
         // Method to connect client application to server
