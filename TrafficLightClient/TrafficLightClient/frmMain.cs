@@ -27,19 +27,13 @@ namespace TrafficLightClient
 
         private bool connected;
         private bool autoconnectStatus;
-        SynchronizationContext uiContext = null;
+        private SynchronizationContext uiContext = null;
+        private System.Windows.Forms.Timer timer;
+        private int currentSec;
 
         /* ------------- Networking attributes -------------- */
-        private int portNumber = 5000;
-        //private int bufferSize = 200;
-        //private TcpClient client = null;
-        //private string server = "eeyore.fost.plymouth.ac.uk";
-        //private string server = "localhost";
         private string server = "10.188.98.47";
-        //private NetworkStream connectionStream = null;
-        //private BinaryReader inStream = null;
-        //private BinaryWriter outStream = null;
-        //private ConnectionThread threadConnection = null;
+        private int portNumber = 5000;
         private object sendLock = new object();
         /* ---------------------------------------------------*/
 
@@ -112,9 +106,6 @@ namespace TrafficLightClient
             string currentYear = DateTime.Now.Year.ToString();
             this.lblCopyright.Text = "© " + currentYear + " James Hunt and Kyle Rusby Some Rights Reserved";
 
-            // style form colors
-            Font programFont = new Font("Arial", 14);
-
             // panels
             this.BackColor = ColorTranslator.FromHtml("#ffffff");
             this.pnlControlsBG.BackColor = ColorTranslator.FromHtml("#E0E0E0");
@@ -130,16 +121,10 @@ namespace TrafficLightClient
                 buttons[i].FlatAppearance.BorderColor = ColorTranslator.FromHtml("#E0E0E0");
                 buttons[i].FlatAppearance.BorderSize = 2;
                 buttons[i].BackColor = ColorTranslator.FromHtml("#ffffff");
-                //buttons[i].Font = programFont;
             }
 
             // radio buttons
             this.radRed.Checked = true;
-
-            foreach (Control control in Controls)
-            {
-                //control.Font = programFont;
-            }
         }
 
         // Invoke method to safely exit application
@@ -158,14 +143,6 @@ namespace TrafficLightClient
         private void radAutoConnect_CheckedChanged(object sender, EventArgs e)
         {
             this.updateAutoConnect(!autoconnectStatus);
-        }
-
-        // Method to handle incoming data from server
-        public void messageReceived(Object thing)
-        {
-            String message = (String)thing;
-            this.lstServerEcho.Items.Add(message);
-            this.createMessageBreak();
         }
 
         // Method to invoke connection from client application to server
@@ -213,17 +190,47 @@ namespace TrafficLightClient
         // Method to invoke the addition of a new car to the server
         private void btnAddCar_Click(object sender, EventArgs e)
         {
-            // add new car
+            // add new car to map
             string color = this.getCarColor();
             string hex = this.getHex(color);
             this.createNewCar(hex);
 
             // code to prevent car spamming
-            //this.btnAddCar.Enabled = false;
-            // TIMER GOES HERE...
+            this.btnAddCar.Enabled = false;
+
+            // re-enable button after 5 seconds
+            this.countdown();
         }
 
-        // Method used to handle incoming packets
+        // Method to manage timer limiting user from spamming cars
+        private void countdown()
+        {
+            this.currentSec = 5;
+            this.btnAddCar.Text = this.currentSec.ToString();
+
+            this.timer = new System.Windows.Forms.Timer();
+            this.timer.Interval = 1000;
+            this.timer.Tick += this.enableCarButton;
+            this.timer.Start();
+        }
+
+        // Method to reactivate the add car button 5 seconds after the user clicked it
+        private void enableCarButton(object sender, EventArgs e)
+        {
+            if (currentSec == 0)
+            {
+                this.timer.Stop();
+                this.btnAddCar.Enabled = true;
+                this.btnAddCar.Text = "Add New Car";
+            }
+            else
+            {
+                this.btnAddCar.Text = this.currentSec.ToString();
+                this.currentSec--;
+            }
+        }
+
+        // Method used to handle incoming packets from server
         private Packet packetHandler(Packet packet)
         {
             switch (packet.ID)
@@ -243,7 +250,7 @@ namespace TrafficLightClient
             return null;
         }
 
-        // Method to handle light changes
+        // Method to handle traffic light color changes
         private void readLights(Packet packet)
         {
             int ID = packet.ReadInt();
@@ -254,7 +261,7 @@ namespace TrafficLightClient
             light.ChangeColour(ColorTranslator.FromHtml(color), this.trafficPanel);
         }
 
-        // Method to handle incoming car data 
+        // Method to handle incoming car data (x,y,hex) 
         private void readCar(Packet packet)
         {
             int count = packet.ReadInt();
@@ -279,9 +286,19 @@ namespace TrafficLightClient
         // Method to connect client application to server
         private bool connectToServer()
         {
-            Client.Connect(false, this.server, this.portNumber, packetHandler, exceptionHandler);
+            bool status = false;
 
-            return Client.Ready;
+            try
+            {
+                Client.Connect(false, this.server, this.portNumber, packetHandler, exceptionHandler);
+                status = Client.Ready;
+            }
+            catch (Exception)
+            {
+                status = false;
+            }
+
+            return status;
         }
 
         // Method to break connection from client application to server
