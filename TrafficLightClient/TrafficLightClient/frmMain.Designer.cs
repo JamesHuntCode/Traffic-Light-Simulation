@@ -110,7 +110,15 @@
             this.lblServerState.Location = new System.Drawing.Point(212, 574);
             this.lblServerState.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblServerState.Name = "lblServerState";
+<<<<<<< HEAD
             this.lblServerState.Size = new System.Drawing.Size(113, 24);
+=======
+<<<<<<< HEAD
+            this.lblServerState.Size = new System.Drawing.Size(113, 24);
+=======
+            this.lblServerState.Size = new System.Drawing.Size(146, 29);
+>>>>>>> 8f832b783dbe7aeb26c5effce89cd69a66560444
+>>>>>>> 5e8726840957a0ad5d241e59af57c3104676564e
             this.lblServerState.TabIndex = 10;
             this.lblServerState.Text = "current-state";
             // 
@@ -349,10 +357,24 @@
             // 
             this.radAutoConnect.AutoSize = true;
             this.radAutoConnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.radAutoConnect.Location = new System.Drawing.Point(135, 71);
             this.radAutoConnect.Margin = new System.Windows.Forms.Padding(4);
             this.radAutoConnect.Name = "radAutoConnect";
             this.radAutoConnect.Size = new System.Drawing.Size(119, 24);
+=======
+<<<<<<< HEAD
+            this.radAutoConnect.Location = new System.Drawing.Point(135, 64);
+            this.radAutoConnect.Margin = new System.Windows.Forms.Padding(4);
+            this.radAutoConnect.Name = "radAutoConnect";
+            this.radAutoConnect.Size = new System.Drawing.Size(186, 24);
+=======
+            this.radAutoConnect.Location = new System.Drawing.Point(129, 70);
+            this.radAutoConnect.Margin = new System.Windows.Forms.Padding(4);
+            this.radAutoConnect.Name = "radAutoConnect";
+            this.radAutoConnect.Size = new System.Drawing.Size(229, 29);
+>>>>>>> 8f832b783dbe7aeb26c5effce89cd69a66560444
+>>>>>>> 5e8726840957a0ad5d241e59af57c3104676564e
             this.radAutoConnect.TabIndex = 13;
             this.radAutoConnect.Text = "Autoconnect";
             this.radAutoConnect.UseVisualStyleBackColor = true;
@@ -362,11 +384,27 @@
             // 
             this.lstServerEcho.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstServerEcho.FormattingEnabled = true;
+<<<<<<< HEAD
             this.lstServerEcho.ItemHeight = 20;
             this.lstServerEcho.Location = new System.Drawing.Point(16, 639);
             this.lstServerEcho.Margin = new System.Windows.Forms.Padding(4);
             this.lstServerEcho.Name = "lstServerEcho";
             this.lstServerEcho.Size = new System.Drawing.Size(897, 124);
+=======
+<<<<<<< HEAD
+            this.lstServerEcho.ItemHeight = 20;
+            this.lstServerEcho.Location = new System.Drawing.Point(16, 639);
+            this.lstServerEcho.Margin = new System.Windows.Forms.Padding(4);
+            this.lstServerEcho.Name = "lstServerEcho";
+            this.lstServerEcho.Size = new System.Drawing.Size(897, 124);
+=======
+            this.lstServerEcho.ItemHeight = 25;
+            this.lstServerEcho.Location = new System.Drawing.Point(16, 639);
+            this.lstServerEcho.Margin = new System.Windows.Forms.Padding(4);
+            this.lstServerEcho.Name = "lstServerEcho";
+            this.lstServerEcho.Size = new System.Drawing.Size(897, 129);
+>>>>>>> 8f832b783dbe7aeb26c5effce89cd69a66560444
+>>>>>>> 5e8726840957a0ad5d241e59af57c3104676564e
             this.lstServerEcho.TabIndex = 7;
             // 
             // picAppLogo
@@ -384,7 +422,15 @@
             // 
             this.lblMainHeading.AutoSize = true;
             this.lblMainHeading.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.lblMainHeading.Location = new System.Drawing.Point(129, 36);
+=======
+<<<<<<< HEAD
+            this.lblMainHeading.Location = new System.Drawing.Point(129, 29);
+=======
+            this.lblMainHeading.Location = new System.Drawing.Point(129, 27);
+>>>>>>> 8f832b783dbe7aeb26c5effce89cd69a66560444
+>>>>>>> 5e8726840957a0ad5d241e59af57c3104676564e
             this.lblMainHeading.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMainHeading.Name = "lblMainHeading";
             this.lblMainHeading.Size = new System.Drawing.Size(290, 31);
