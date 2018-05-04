@@ -31,7 +31,19 @@ namespace TrafficLightClient
 
         /* ------------- Networking attributes -------------- */
         private int portNumber = 5000;
+<<<<<<< HEAD
         private string server = "10.188.98.47";
+=======
+        //private int bufferSize = 200;
+        //private TcpClient client = null;
+        //private string server = "eeyore.fost.plymouth.ac.uk";
+        //private string server = "localhost";
+        private string server = "10.188.98.47";
+        //private NetworkStream connectionStream = null;
+        //private BinaryReader inStream = null;
+        //private BinaryWriter outStream = null;
+        //private ConnectionThread threadConnection = null;
+>>>>>>> 8f832b783dbe7aeb26c5effce89cd69a66560444
         private object sendLock = new object();
         /* ---------------------------------------------------*/
 
@@ -104,6 +116,12 @@ namespace TrafficLightClient
             string currentYear = DateTime.Now.Year.ToString();
             this.lblCopyright.Text = "© " + currentYear + " James Hunt and Kyle Rusby Some Rights Reserved";
 
+<<<<<<< HEAD
+=======
+            // style form colors
+            Font programFont = new Font("Arial", 14);
+
+>>>>>>> 8f832b783dbe7aeb26c5effce89cd69a66560444
             // panels
             this.BackColor = ColorTranslator.FromHtml("#ffffff");
             this.pnlControlsBG.BackColor = ColorTranslator.FromHtml("#E0E0E0");
@@ -119,10 +137,16 @@ namespace TrafficLightClient
                 buttons[i].FlatAppearance.BorderColor = ColorTranslator.FromHtml("#E0E0E0");
                 buttons[i].FlatAppearance.BorderSize = 2;
                 buttons[i].BackColor = ColorTranslator.FromHtml("#ffffff");
+                //buttons[i].Font = programFont;
             }
 
             // radio buttons
             this.radRed.Checked = true;
+
+            foreach (Control control in Controls)
+            {
+                //control.Font = programFont;
+            }
         }
 
         // Invoke method to safely exit application
@@ -202,7 +226,7 @@ namespace TrafficLightClient
             this.createNewCar(hex);
 
             // code to prevent car spamming
-            this.btnAddCar.Enabled = false;
+            //this.btnAddCar.Enabled = false;
             // TIMER GOES HERE...
         }
 
@@ -226,7 +250,11 @@ namespace TrafficLightClient
             return null;
         }
 
+<<<<<<< HEAD
         // Method to handle traffic light color changes
+=======
+        // Method to handle light changes
+>>>>>>> 8f832b783dbe7aeb26c5effce89cd69a66560444
         private void readLights(Packet packet)
         {
             int ID = packet.ReadInt();
@@ -237,7 +265,11 @@ namespace TrafficLightClient
             light.ChangeColour(ColorTranslator.FromHtml(color), this.trafficPanel);
         }
 
+<<<<<<< HEAD
         // Method to handle incoming car data (x,y,hex) 
+=======
+        // Method to handle incoming car data 
+>>>>>>> 8f832b783dbe7aeb26c5effce89cd69a66560444
         private void readCar(Packet packet)
         {
             int count = packet.ReadInt();
@@ -262,6 +294,7 @@ namespace TrafficLightClient
         // Method to connect client application to server
         private bool connectToServer()
         {
+<<<<<<< HEAD
             bool status = false;
 
             try
@@ -275,6 +308,11 @@ namespace TrafficLightClient
             }
 
             return status;
+=======
+            Client.Connect(false, this.server, this.portNumber, packetHandler, exceptionHandler);
+
+            return Client.Ready;
+>>>>>>> 8f832b783dbe7aeb26c5effce89cd69a66560444
         }
 
         // Method to break connection from client application to server
