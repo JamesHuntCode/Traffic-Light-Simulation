@@ -79,11 +79,13 @@ namespace TrafficLightClient
 
                 if (connected)
                 {
+                    this.grpNotConnected.Visible = false;
                     this.updateForm("connected");
                     this.connected = true;
                 }
                 else
                 {
+                    this.grpNotConnected.Visible = true;
                     MessageBox.Show(text: "Oops! There has been an error connecting to the server. Please try again later.");
                     this.pushNotification("failure");
                     this.connected = false;
@@ -96,6 +98,7 @@ namespace TrafficLightClient
 
                 // group boxes 
                 this.grpFunctionality.Enabled = false;
+                this.grpNotConnected.Visible = true;
 
                 // labels
                 this.lblServerState.Text = "Disconnected";
@@ -159,11 +162,13 @@ namespace TrafficLightClient
 
                 if (connection)
                 {
+                    this.grpNotConnected.Visible = false;
                     this.updateForm("connected");
                     this.connected = true;
                 }
                 else
                 {
+                    this.grpNotConnected.Visible = true;
                     MessageBox.Show(text: "Oops! There has been an error connecting to the server. Please try again later.");
                     this.pushNotification("failure");
                     this.updateForm("disconnected");
@@ -290,11 +295,13 @@ namespace TrafficLightClient
 
             try
             {
+                this.grpNotConnected.Visible = false;
                 Client.Connect(false, this.server, this.portNumber, packetHandler, exceptionHandler);
                 status = Client.Ready;
             }
             catch (Exception)
             {
+                this.grpNotConnected.Visible = true;
                 status = false;
             }
 
@@ -304,6 +311,7 @@ namespace TrafficLightClient
         // Method to break connection from client application to server
         private void disconnectFromServer()
         {
+            this.grpNotConnected.Visible = true;
             Client.Kill();
         }
 
@@ -370,7 +378,7 @@ namespace TrafficLightClient
         {
             if (status == "connected")
             {
-                this.btnConnect.Text = "Disconnect";
+                this.btnConnect.Text = "Disconnect From Server";
                 this.lblServerState.Text = "Connected";
                 this.lblServerState.ForeColor = Color.Green;
                 this.grpFunctionality.Enabled = true;
@@ -379,7 +387,7 @@ namespace TrafficLightClient
             }
             else if (status == "disconnected")
             {
-                this.btnConnect.Text = "Connect";
+                this.btnConnect.Text = "Connect To Server";
                 this.lblServerState.Text = "Disconnected";
                 this.lblServerState.ForeColor = Color.Red;
                 this.grpFunctionality.Enabled = false;
@@ -387,7 +395,7 @@ namespace TrafficLightClient
             }
             else
             {
-                this.btnConnect.Text = "Disconnect";
+                this.btnConnect.Text = "Disconnect From Server";
                 this.lblServerState.Text = "Connecting...";
                 this.lblServerState.ForeColor = Color.Teal;
                 this.grpFunctionality.Enabled = false;

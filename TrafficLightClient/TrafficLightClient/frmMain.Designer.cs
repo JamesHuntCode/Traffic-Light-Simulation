@@ -59,6 +59,9 @@
             this.lblVersion = new System.Windows.Forms.Label();
             this.pnlSimulationBG = new System.Windows.Forms.Panel();
             this.trafficPanel = new TrafficLightPanel.TrafficPanel();
+            this.grpNotConnected = new System.Windows.Forms.GroupBox();
+            this.picNoConnection = new System.Windows.Forms.PictureBox();
+            this.lblNoConnection = new System.Windows.Forms.Label();
             this.pnlControlsBG.SuspendLayout();
             this.pnlControls.SuspendLayout();
             this.grpFunctionality.SuspendLayout();
@@ -66,6 +69,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAppLogo)).BeginInit();
             this.pnlSimulationBG.SuspendLayout();
+            this.grpNotConnected.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picNoConnection)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlControlsBG
@@ -99,7 +104,7 @@
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(364, 61);
             this.btnConnect.TabIndex = 6;
-            this.btnConnect.Text = "Connect";
+            this.btnConnect.Text = "Connect To Server";
             this.btnConnect.UseVisualStyleBackColor = true;
             this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
@@ -111,8 +116,6 @@
             this.lblServerState.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblServerState.Name = "lblServerState";
             this.lblServerState.Size = new System.Drawing.Size(113, 24);
-            this.lblServerState.Size = new System.Drawing.Size(113, 24);
-            this.lblServerState.Size = new System.Drawing.Size(146, 29);
             this.lblServerState.TabIndex = 10;
             this.lblServerState.Text = "current-state";
             // 
@@ -351,18 +354,10 @@
             // 
             this.radAutoConnect.AutoSize = true;
             this.radAutoConnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radAutoConnect.Location = new System.Drawing.Point(135, 71);
-            this.radAutoConnect.Margin = new System.Windows.Forms.Padding(4);
-            this.radAutoConnect.Name = "radAutoConnect";
-            this.radAutoConnect.Size = new System.Drawing.Size(119, 24);
-            this.radAutoConnect.Location = new System.Drawing.Point(135, 64);
-            this.radAutoConnect.Margin = new System.Windows.Forms.Padding(4);
-            this.radAutoConnect.Name = "radAutoConnect";
-            this.radAutoConnect.Size = new System.Drawing.Size(186, 24);
             this.radAutoConnect.Location = new System.Drawing.Point(129, 70);
             this.radAutoConnect.Margin = new System.Windows.Forms.Padding(4);
             this.radAutoConnect.Name = "radAutoConnect";
-            this.radAutoConnect.Size = new System.Drawing.Size(229, 29);
+            this.radAutoConnect.Size = new System.Drawing.Size(119, 24);
             this.radAutoConnect.TabIndex = 13;
             this.radAutoConnect.Text = "Autoconnect";
             this.radAutoConnect.UseVisualStyleBackColor = true;
@@ -377,16 +372,6 @@
             this.lstServerEcho.Margin = new System.Windows.Forms.Padding(4);
             this.lstServerEcho.Name = "lstServerEcho";
             this.lstServerEcho.Size = new System.Drawing.Size(897, 124);
-            this.lstServerEcho.ItemHeight = 20;
-            this.lstServerEcho.Location = new System.Drawing.Point(16, 639);
-            this.lstServerEcho.Margin = new System.Windows.Forms.Padding(4);
-            this.lstServerEcho.Name = "lstServerEcho";
-            this.lstServerEcho.Size = new System.Drawing.Size(897, 124);
-            this.lstServerEcho.ItemHeight = 25;
-            this.lstServerEcho.Location = new System.Drawing.Point(16, 639);
-            this.lstServerEcho.Margin = new System.Windows.Forms.Padding(4);
-            this.lstServerEcho.Name = "lstServerEcho";
-            this.lstServerEcho.Size = new System.Drawing.Size(897, 129);
             this.lstServerEcho.TabIndex = 7;
             // 
             // picAppLogo
@@ -404,8 +389,6 @@
             // 
             this.lblMainHeading.AutoSize = true;
             this.lblMainHeading.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMainHeading.Location = new System.Drawing.Point(129, 36);
-            this.lblMainHeading.Location = new System.Drawing.Point(129, 29);
             this.lblMainHeading.Location = new System.Drawing.Point(129, 27);
             this.lblMainHeading.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMainHeading.Name = "lblMainHeading";
@@ -437,6 +420,7 @@
             // 
             // pnlSimulationBG
             // 
+            this.pnlSimulationBG.Controls.Add(this.grpNotConnected);
             this.pnlSimulationBG.Controls.Add(this.trafficPanel);
             this.pnlSimulationBG.Location = new System.Drawing.Point(16, 122);
             this.pnlSimulationBG.Margin = new System.Windows.Forms.Padding(4);
@@ -450,6 +434,37 @@
             this.trafficPanel.Name = "trafficPanel";
             this.trafficPanel.Size = new System.Drawing.Size(500, 500);
             this.trafficPanel.TabIndex = 0;
+            // 
+            // grpNotConnected
+            // 
+            this.grpNotConnected.Controls.Add(this.lblNoConnection);
+            this.grpNotConnected.Controls.Add(this.picNoConnection);
+            this.grpNotConnected.Location = new System.Drawing.Point(3, 3);
+            this.grpNotConnected.Name = "grpNotConnected";
+            this.grpNotConnected.Size = new System.Drawing.Size(503, 503);
+            this.grpNotConnected.TabIndex = 0;
+            this.grpNotConnected.TabStop = false;
+            // 
+            // picNoConnection
+            // 
+            this.picNoConnection.Image = ((System.Drawing.Image)(resources.GetObject("picNoConnection.Image")));
+            this.picNoConnection.Location = new System.Drawing.Point(116, 141);
+            this.picNoConnection.Name = "picNoConnection";
+            this.picNoConnection.Size = new System.Drawing.Size(240, 214);
+            this.picNoConnection.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picNoConnection.TabIndex = 0;
+            this.picNoConnection.TabStop = false;
+            // 
+            // lblNoConnection
+            // 
+            this.lblNoConnection.AutoSize = true;
+            this.lblNoConnection.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNoConnection.Location = new System.Drawing.Point(38, 358);
+            this.lblNoConnection.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNoConnection.Name = "lblNoConnection";
+            this.lblNoConnection.Size = new System.Drawing.Size(417, 31);
+            this.lblNoConnection.TabIndex = 14;
+            this.lblNoConnection.Text = "Looks Like You\'re Not Connected";
             // 
             // frmMain
             // 
@@ -479,6 +494,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAppLogo)).EndInit();
             this.pnlSimulationBG.ResumeLayout(false);
+            this.grpNotConnected.ResumeLayout(false);
+            this.grpNotConnected.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picNoConnection)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -516,6 +534,9 @@
         private System.Windows.Forms.RadioButton radRed;
         private System.Windows.Forms.Panel pnlSimulationBG;
         private TrafficLightPanel.TrafficPanel trafficPanel;
+        private System.Windows.Forms.GroupBox grpNotConnected;
+        private System.Windows.Forms.PictureBox picNoConnection;
+        private System.Windows.Forms.Label lblNoConnection;
     }
 }
 
