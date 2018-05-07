@@ -32,7 +32,7 @@ namespace TrafficLightClient
         private int currentSec;
 
         /* ------------- Networking attributes -------------- */
-        private string server = "10.188.98.47";
+        private string server = "10.188.98.20";
         private int portNumber = 5000;
         private object sendLock = new object();
         /* ---------------------------------------------------*/
@@ -41,7 +41,7 @@ namespace TrafficLightClient
         private void prepareForm()
         {
             // load traffic panel 
-            this.trafficPanel.Init(true, 500, 500);
+            this.trafficPanel.Init(false, 500, 500);
             Tuple<int, int, List<Tile>> mapParams = MapManager.OpenMap(Environment.CurrentDirectory + @"\crossroad.timap");
             this.trafficPanel.UpdateTiles(mapParams.Item1, mapParams.Item2, mapParams.Item3);
 
@@ -210,7 +210,7 @@ namespace TrafficLightClient
         // Method to manage timer limiting user from spamming cars
         private void countdown()
         {
-            this.currentSec = 5;
+            this.currentSec = 3;
             this.btnAddCar.Text = this.currentSec.ToString();
 
             this.timer = new System.Windows.Forms.Timer();
@@ -222,7 +222,7 @@ namespace TrafficLightClient
         // Method to reactivate the add car button 5 seconds after the user clicked it
         private void enableCarButton(object sender, EventArgs e)
         {
-            if (currentSec == 0)
+            if (this.currentSec == 0)
             {
                 this.timer.Stop();
                 this.btnAddCar.Enabled = true;
@@ -230,8 +230,8 @@ namespace TrafficLightClient
             }
             else
             {
-                this.btnAddCar.Text = this.currentSec.ToString();
                 this.currentSec--;
+                this.btnAddCar.Text = this.currentSec.ToString();
             }
         }
 
