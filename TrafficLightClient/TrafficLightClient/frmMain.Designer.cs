@@ -58,10 +58,10 @@
             this.lblCopyright = new System.Windows.Forms.Label();
             this.lblVersion = new System.Windows.Forms.Label();
             this.pnlSimulationBG = new System.Windows.Forms.Panel();
-            this.trafficPanel = new TrafficLightPanel.TrafficPanel();
             this.grpNotConnected = new System.Windows.Forms.GroupBox();
-            this.picNoConnection = new System.Windows.Forms.PictureBox();
             this.lblNoConnection = new System.Windows.Forms.Label();
+            this.picNoConnection = new System.Windows.Forms.PictureBox();
+            this.trafficPanel = new TrafficLightPanel.TrafficPanel();
             this.pnlControlsBG.SuspendLayout();
             this.pnlControls.SuspendLayout();
             this.grpFunctionality.SuspendLayout();
@@ -354,7 +354,7 @@
             // 
             this.radAutoConnect.AutoSize = true;
             this.radAutoConnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radAutoConnect.Location = new System.Drawing.Point(129, 70);
+            this.radAutoConnect.Location = new System.Drawing.Point(135, 62);
             this.radAutoConnect.Margin = new System.Windows.Forms.Padding(4);
             this.radAutoConnect.Name = "radAutoConnect";
             this.radAutoConnect.Size = new System.Drawing.Size(119, 24);
@@ -428,13 +428,6 @@
             this.pnlSimulationBG.Size = new System.Drawing.Size(509, 509);
             this.pnlSimulationBG.TabIndex = 1;
             // 
-            // trafficPanel
-            // 
-            this.trafficPanel.Location = new System.Drawing.Point(4, 3);
-            this.trafficPanel.Name = "trafficPanel";
-            this.trafficPanel.Size = new System.Drawing.Size(500, 500);
-            this.trafficPanel.TabIndex = 0;
-            // 
             // grpNotConnected
             // 
             this.grpNotConnected.Controls.Add(this.lblNoConnection);
@@ -444,16 +437,6 @@
             this.grpNotConnected.Size = new System.Drawing.Size(503, 503);
             this.grpNotConnected.TabIndex = 0;
             this.grpNotConnected.TabStop = false;
-            // 
-            // picNoConnection
-            // 
-            this.picNoConnection.Image = ((System.Drawing.Image)(resources.GetObject("picNoConnection.Image")));
-            this.picNoConnection.Location = new System.Drawing.Point(116, 141);
-            this.picNoConnection.Name = "picNoConnection";
-            this.picNoConnection.Size = new System.Drawing.Size(240, 214);
-            this.picNoConnection.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picNoConnection.TabIndex = 0;
-            this.picNoConnection.TabStop = false;
             // 
             // lblNoConnection
             // 
@@ -465,6 +448,23 @@
             this.lblNoConnection.Size = new System.Drawing.Size(417, 31);
             this.lblNoConnection.TabIndex = 14;
             this.lblNoConnection.Text = "Looks Like You\'re Not Connected";
+            // 
+            // picNoConnection
+            // 
+            this.picNoConnection.Image = ((System.Drawing.Image)(resources.GetObject("picNoConnection.Image")));
+            this.picNoConnection.Location = new System.Drawing.Point(116, 141);
+            this.picNoConnection.Name = "picNoConnection";
+            this.picNoConnection.Size = new System.Drawing.Size(240, 214);
+            this.picNoConnection.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picNoConnection.TabIndex = 0;
+            this.picNoConnection.TabStop = false;
+            // 
+            // trafficPanel
+            // 
+            this.trafficPanel.Location = new System.Drawing.Point(4, 3);
+            this.trafficPanel.Name = "trafficPanel";
+            this.trafficPanel.Size = new System.Drawing.Size(500, 500);
+            this.trafficPanel.TabIndex = 0;
             // 
             // frmMain
             // 

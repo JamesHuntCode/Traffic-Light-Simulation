@@ -285,7 +285,8 @@ namespace TrafficLightClient
         // Method to handle exceptions in client 
         private void exceptionHandler(Exception exception)
         {
-            MessageBox.Show(exception.Message);
+            MessageBox.Show(text: "Oops! It looks like the connection to the server has been lost. Try connecting again");
+            this.disconnectFromServer();
         }
 
         // Method to connect client application to server
