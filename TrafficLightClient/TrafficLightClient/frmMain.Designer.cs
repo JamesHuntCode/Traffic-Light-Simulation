@@ -62,6 +62,8 @@
             this.lblNoConnection = new System.Windows.Forms.Label();
             this.picNoConnection = new System.Windows.Forms.PictureBox();
             this.trafficPanel = new TrafficLightPanel.TrafficPanel();
+            this.txtIPAddress = new System.Windows.Forms.TextBox();
+            this.lblIP = new System.Windows.Forms.Label();
             this.pnlControlsBG.SuspendLayout();
             this.pnlControls.SuspendLayout();
             this.grpFunctionality.SuspendLayout();
@@ -354,7 +356,7 @@
             // 
             this.radAutoConnect.AutoSize = true;
             this.radAutoConnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radAutoConnect.Location = new System.Drawing.Point(135, 62);
+            this.radAutoConnect.Location = new System.Drawing.Point(406, 90);
             this.radAutoConnect.Margin = new System.Windows.Forms.Padding(4);
             this.radAutoConnect.Name = "radAutoConnect";
             this.radAutoConnect.Size = new System.Drawing.Size(119, 24);
@@ -466,10 +468,32 @@
             this.trafficPanel.Size = new System.Drawing.Size(500, 500);
             this.trafficPanel.TabIndex = 0;
             // 
+            // txtIPAddress
+            // 
+            this.txtIPAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIPAddress.Location = new System.Drawing.Point(166, 88);
+            this.txtIPAddress.Name = "txtIPAddress";
+            this.txtIPAddress.Size = new System.Drawing.Size(233, 26);
+            this.txtIPAddress.TabIndex = 14;
+            this.txtIPAddress.TextChanged += new System.EventHandler(this.txtIPAddress_TextChanged);
+            // 
+            // lblIP
+            // 
+            this.lblIP.AutoSize = true;
+            this.lblIP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIP.Location = new System.Drawing.Point(131, 91);
+            this.lblIP.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblIP.Name = "lblIP";
+            this.lblIP.Size = new System.Drawing.Size(28, 20);
+            this.lblIP.TabIndex = 17;
+            this.lblIP.Text = "IP:";
+            // 
             // frmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(928, 801);
+            this.Controls.Add(this.lblIP);
+            this.Controls.Add(this.txtIPAddress);
             this.Controls.Add(this.radAutoConnect);
             this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.lblCopyright);
@@ -537,6 +561,8 @@
         private System.Windows.Forms.GroupBox grpNotConnected;
         private System.Windows.Forms.PictureBox picNoConnection;
         private System.Windows.Forms.Label lblNoConnection;
+        private System.Windows.Forms.TextBox txtIPAddress;
+        private System.Windows.Forms.Label lblIP;
     }
 }
 

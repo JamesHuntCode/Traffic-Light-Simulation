@@ -32,7 +32,7 @@ namespace TrafficLightClient
         private int currentSec;
 
         /* ------------- Networking attributes -------------- */
-        private string server = "10.188.98.20";
+        private string server = "";
         private int portNumber = 5000;
         private object sendLock = new object();
         /* ---------------------------------------------------*/
@@ -125,6 +125,8 @@ namespace TrafficLightClient
                 buttons[i].FlatAppearance.BorderSize = 2;
                 buttons[i].BackColor = ColorTranslator.FromHtml("#ffffff");
             }
+
+            this.btnConnect.Enabled = false;
 
             // radio buttons
             this.radRed.Checked = true;
@@ -544,6 +546,21 @@ namespace TrafficLightClient
             color = selected.Text.ToLower();
 
             return color;
+        }
+
+        // Method used to allow the user to manually input the IP address of the proxy (& in our case the server also)
+        private void txtIPAddress_TextChanged(object sender, EventArgs e)
+        {
+            this.server = this.txtIPAddress.Text;
+
+            if (this.server == String.Empty)
+            {
+                this.btnConnect.Enabled = false;
+            }
+            else
+            {
+                this.btnConnect.Enabled = true;
+            }
         }
     }
 }
